@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fontaine Breizh Informatique | Dépannage & Conseil IT</title>
+  <meta name="description" content="Dépannage informatique pour particuliers et conseil en infrastructure & réseaux pour professionnels sur Pleumeleuc et le bassin rennais.">
+  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap](https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap)" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-green: #009B4D;
+      --primary-green-hover: #007D3E;
+      --dark-slate: #24373F;
+      --dark-slate-soft: #324750;
+      --bg-light: #F8FAFB;
+      --card-bg: #FFFFFF;
+      --border-color: #E2E8F0;
+      --text-muted: #5A6A72;
+      --radius: 12px;
+      --shadow: 0 4px 20px -2px rgba(36, 55, 63, 0.08);
+      --shadow-hover: 0 10px 25px -4px rgba(36, 55, 63, 0.15);
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--dark-slate);
+      line-height: 1.6;
+      padding: 0 20px 60px 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 48px 0 32px 0;
+    }
+
+    .logo-wrapper {
+      max-width: 320px;
+      margin: 0 auto 20px auto;
+    }
+
+    .logo-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .badge-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background-color: rgba(0, 155, 77, 0.1);
+      color: var(--primary-green);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--dark-slate);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .pricing-list
