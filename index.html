@@ -62,7 +62,7 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
-            transition: all 0.5s ease; /* Pour la transition fluide du thème Jedi/Sith */
+            transition: all 0.5s ease;
         }
 
         /* --- 1. EASTER EGG : BOOT TERMINAL --- */
@@ -349,27 +349,90 @@
         </div>
     </section>
 
-    <!-- Section Actualités IT -->
+    <!-- Section Actualités IT (RESTAURÉE AVEC SES BALISES) -->
     <section class="news-section" id="actualites">
         <h2>Actualités Informatiques</h2>
         <p class="news-intro">Ce qui bouge dans le monde de l'IT, du mobile et du jeu vidéo.</p>
+
+        <h3 class="news-subheading">Informatique & Sécurité</h3>
         <div class="cards-container">
+            <!-- NEWS:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
             <div class="news-card">
                 <span class="news-date">13 octobre 2026</span>
                 <h3>Fin du support gratuit de Windows 10 en Europe</h3>
-                <p>L'extension gratuite du support de sécurité s'arrête à cette date. Les PC sous Windows 10 devront basculer vers Windows 11, payer, ou envisager une seconde vie sous Linux !</p>
+                <p>L'extension gratuite du support de sécurité de Windows 10 accordée aux particuliers européens s'arrête à cette date. Les PC encore sous Windows 10 devront basculer vers Windows 11, souscrire à une extension payante, ou envisager une seconde vie sous Linux : c'est justement le créneau de notre accompagnement "Sauvetage & Open Source" ci-dessus.</p>
+                <a href="https://www.it-connect.fr/fin-du-support-de-windows-10-tout-le-monde-pourra-beneficier-du-programme-esu-mais-il-faudra-payer/" target="_blank" rel="noopener">Lire l'article source →</a>
             </div>
+
             <div class="news-card">
                 <span class="news-date">Septembre 2026</span>
                 <h3>Un Patch Tuesday record chez Microsoft</h3>
-                <p>Près de 1000 vulnérabilités corrigées d'un coup. Un rappel utile : garder ses mises à jour à jour reste la première ligne de défense.</p>
+                <p>Le lot mensuel de correctifs de sécurité de Microsoft a battu un nouveau record avec près de 1000 vulnérabilités corrigées d'un coup, dont deux failles déjà exploitées touchant Windows, Office et Exchange. Un rappel utile : garder ses mises à jour à jour reste la première ligne de défense, aussi bien pour les particuliers que pour les pros.</p>
+                <a href="https://www.it-connect.fr/patch-tuesday-septembre-2026-recapitulatif/" target="_blank" rel="noopener">Lire l'article source →</a>
             </div>
-            <div class="news-card gaming">
-                <span class="news-date">Septembre 2026</span>
-                <h3>GTA 6 dope déjà les ventes de consoles</h3>
-                <p>L'attente autour de GTA 6 se traduit par une nette hausse des ventes de PS5 et Xbox Series, les joueurs anticipant leur mise à niveau.</p>
+
+            <div class="news-card">
+                <span class="news-date">14 septembre 2026</span>
+                <h3>Alerte sécurité sur des équipements réseau Cisco</h3>
+                <p>Une vulnérabilité activement exploitée a été signalée sur plusieurs produits de messagerie sécurisée Cisco, et ajoutée au catalogue officiel des failles exploitées connues. Un exemple concret de l'intérêt d'un audit réseau régulier pour repérer les équipements à mettre à jour en priorité.</p>
+                <a href="https://www.cyber.gc.ca/fr/alertes-avis/bulletin-securite-cisco-av26-921" target="_blank" rel="noopener">Lire l'article source →</a>
             </div>
+            <!-- NEWS:END -->
         </div>
+
+        <h3 class="news-subheading">Mobile — Android & iOS</h3>
+        <div class="cards-container">
+            <!-- MOBILE:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
+            <div class="news-card mobile">
+                <span class="news-date">17 septembre 2026</span>
+                <h3>Un bug d'iOS 27 bloque certains iPhone</h3>
+                <p>Un problème identifié sur la dernière version d'iOS 27 peut rendre un iPhone inutilisable. Une solution de contournement existe déjà en attendant un correctif officiel d'Apple.</p>
+                <a href="https://www.tomsguide.fr/ce-bug-dios-27-bloque-votre-iphone-voici-une-solution/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card mobile">
+                <span class="news-date">17 septembre 2026</span>
+                <h3>One UI 9 (Android 17) arrive sur les Galaxy S26</h3>
+                <p>Samsung déploie officiellement sa surcouche One UI 9, basée sur Android 17, sur la série Galaxy S26. Si votre modèle est compatible, la mise à jour devrait arriver progressivement dans les prochains jours.</p>
+                <a href="https://www.tomsguide.fr/one-ui-9-est-la-samsung-deploie-android-17-et-votre-galaxy-est-peut-etre-dans-la-liste/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card mobile">
+                <span class="news-date">17 septembre 2026</span>
+                <h3>Un iPhone "Duo" pliant en préparation chez Apple</h3>
+                <p>Les rumeurs autour d'un iPhone pliant, en plus des iPhone 18 Pro, se précisent pour combler certains manques de la gamme actuelle face à la concurrence Android.</p>
+                <a href="https://www.tomsguide.fr/iphone-duo-apple-veut-voir-plus-grand-et-gommer-ses-principaux-manques/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+            <!-- MOBILE:END -->
+        </div>
+
+        <h3 class="news-subheading">Jeux vidéo</h3>
+        <div class="cards-container">
+            <!-- GAMING:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
+            <div class="news-card gaming">
+                <span class="news-date">16 septembre 2026</span>
+                <h3>GTA 6 dope déjà les ventes de consoles</h3>
+                <p>L'attente autour de GTA 6 se traduit par une nette hausse des ventes de PS5 et Xbox Series chez certains distributeurs, les joueurs anticipant leur mise à niveau avant la sortie du jeu.</p>
+                <a href="https://www.tomsguide.fr/une-croissance-a-deux-chiffres-gta-6-fait-flamber-les-ventes-de-ps5-et-xbox-chez-carrefour/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card gaming">
+                <span class="news-date">16 septembre 2026</span>
+                <h3>Deux jeux gratuits sur l'Epic Games Store</h3>
+                <p>Comme chaque semaine, l'Epic Games Store propose deux jeux à récupérer gratuitement et à garder définitivement dans sa bibliothèque, le temps de l'offre.</p>
+                <a href="https://www.tomsguide.fr/epic-games-store-ne-passez-pas-a-cote-de-ces-deux-jeux-gratuits/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card gaming">
+                <span class="news-date">27 septembre 2026</span>
+                <h3>Silent Hill: Townfall, sortie très attendue</h3>
+                <p>Le nouvel opus de la licence d'horreur culte Silent Hill doit sortir sur PC et PS5 fin septembre, l'une des sorties les plus suivies de ce mois chargé en jeux vidéo.</p>
+                <a href="https://www.millenium.org/guide/111787.html" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+            <!-- GAMING:END -->
+        </div>
+
+        <p class="news-footnote">Actualités mises à jour automatiquement chaque jour — dernière actualisation : <span id="news-updated">18/09/2026</span>.</p>
     </section>
 
     <!-- Pied de page -->
