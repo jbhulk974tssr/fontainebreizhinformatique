@@ -10,7 +10,7 @@
 
     <!-- Balises Open Graph -->
     <meta property="og:title" content="Fontaine Breizh Informatique - Votre expert IT local">
-    <meta property="og:description" content="Audit réseau, dépannage PC, transition Linux et gestion de vos réseaux sociaux sur le bassin rennais.">
+    <meta property="og:description" content="Conseil IT, dépannage PC, transition Linux et gestion de vos réseaux sociaux sur le bassin rennais.">
     <meta property="og:image" content="https://www.fontainebreizhinformatique.fr/logo.jpg">
     <meta property="og:url" content="https://www.fontainebreizhinformatique.fr">
     <meta property="og:type" content="website">
@@ -81,7 +81,7 @@
         .boot-ok { color: #00ff00; font-weight: bold; }
         .boot-fail { color: #ff0000; font-weight: bold; }
 
-        /* Navbar & Hero (Existant optimisé) */
+        /* Navbar & Hero */
         .navbar {
             display: flex; align-items: center; justify-content: space-between;
             padding: 1rem 5%; background-color: rgba(15, 23, 42, 0.9);
@@ -141,7 +141,7 @@
         .quiz-result { display: none; margin-top: 1rem; }
         .quiz-result p { font-size: 1.1rem; color: var(--vert-celte); font-weight: 700; margin-bottom: 1.5rem; }
 
-        /* Sections existantes (Prestations & Actus) */
+        /* Sections Prestations & Actus */
         .services-section, .news-section { padding: 5rem 5%; text-align: center; }
         .services-section h2, .news-section h2 { font-size: 2.2rem; margin-bottom: 1rem; color: var(--white); }
         .services-intro, .news-intro { color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; max-width: 700px; margin-inline: auto; }
@@ -224,27 +224,27 @@
     <!-- Section Accueil -->
     <header class="hero">
         <img src="logo.jpg" alt="Logo Fontaine Breizh Informatique" class="hero-logo">
-        <h1>La rigueur technique au service de votre <span>infrastructure</span></h1>
-        <p>Support IT, optimisation réseau et gestion de l'empreinte numérique. Interventions sur Pleumeleuc et le bassin rennais.</p>
+        <h1>L'accompagnement et le conseil au service de votre <span>réussite</span></h1>
+        <p>Conseil IT, accompagnement numérique et animation de vos réseaux sociaux. Interventions sur Pleumeleuc et le bassin rennais.</p>
         <a href="mailto:contact@fontainebreizhinformatique.fr" class="btn" id="contact">Demander un diagnostic</a>
     </header>
 
-    <!-- 2. BANDEAU TECH STACK -->
+    <!-- 2. BANDEAU TECH STACK ACTUALISÉ -->
     <div class="tech-stack-container">
         <div class="tech-track">
             <!-- On double le contenu pour l'effet de défilement infini -->
             <div class="tech-item"><i class="devicon-debian-plain"></i> Debian 12</div>
             <div class="tech-item"><i class="devicon-ubuntu-plain"></i> Linux Mint / Zorin OS</div>
-            <div class="tech-item"><i class="devicon-windows8-original"></i> Windows Server</div>
-            <div class="tech-item"><i class="devicon-network-wired"></i> Réseaux & pfSense</div>
-            <div class="tech-item"><i class="devicon-bash-plain"></i> Scripts & Automatisation</div>
+            <div class="tech-item">💡 Conseil & Stratégie IT</div>
+            <div class="tech-item">📱 Animation Réseaux Sociaux</div>
+            <div class="tech-item">🤝 Accompagnement Numérique</div>
             <div class="tech-item"><i class="devicon-apple-original"></i> Dépannage Mac/iOS</div>
             
             <div class="tech-item"><i class="devicon-debian-plain"></i> Debian 12</div>
             <div class="tech-item"><i class="devicon-ubuntu-plain"></i> Linux Mint / Zorin OS</div>
-            <div class="tech-item"><i class="devicon-windows8-original"></i> Windows Server</div>
-            <div class="tech-item"><i class="devicon-network-wired"></i> Réseaux & pfSense</div>
-            <div class="tech-item"><i class="devicon-bash-plain"></i> Scripts & Automatisation</div>
+            <div class="tech-item">💡 Conseil & Stratégie IT</div>
+            <div class="tech-item">📱 Animation Réseaux Sociaux</div>
+            <div class="tech-item">🤝 Accompagnement Numérique</div>
             <div class="tech-item"><i class="devicon-apple-original"></i> Dépannage Mac/iOS</div>
         </div>
     </div>
@@ -252,13 +252,13 @@
     <!-- 3. MINI-QUIZ (Lead Magnet) -->
     <section class="quiz-section">
         <div class="quiz-box" id="quiz-container">
-            <h3 id="quiz-question">🛠️ Votre PC vous donne du fil à retordre ?</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;" id="quiz-subtitle">Passez ce test rapide en 2 questions pour un pré-diagnostic.</p>
+            <h3 id="quiz-question">🛠️ Votre outil informatique vous freine au quotidien ?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;" id="quiz-subtitle">Passez ce test rapide en 2 questions pour un premier diagnostic.</p>
             
             <div class="quiz-options" id="quiz-options">
-                <button class="quiz-btn" onclick="nextQuestion(1)">Mon PC rame au démarrage et à l'ouverture des pages</button>
-                <button class="quiz-btn" onclick="nextQuestion(1)">J'ai des pubs intempestives ou des comportements bizarres</button>
-                <button class="quiz-btn" onclick="nextQuestion(1)">Mon réseau Wi-Fi coupe ou est très faible</button>
+                <button class="quiz-btn" onclick="nextQuestion(1)">Mon PC est trop lent ou plante souvent</button>
+                <button class="quiz-btn" onclick="nextQuestion(1)">Mes réseaux sociaux manquent de visibilité</button>
+                <button class="quiz-btn" onclick="nextQuestion(1)">J'ai besoin de conseils pour renouveler mon matériel</button>
             </div>
 
             <div class="quiz-result" id="quiz-result">
@@ -274,16 +274,18 @@
         <p class="services-intro">Approche 100% Conseil et Service. Aucune vente de matériel, optimisation de l'existant.</p>
 
         <div class="cards-container">
+            <!-- Carte Professionnels (Mise en avant Conseil / CM) -->
             <div class="card">
                 <h3>🏢 Entreprises & Pros</h3>
-                <p>Sécurisez votre IT et externalisez la gestion de vos réseaux sociaux pour rester concentré sur votre cœur de métier.</p>
+                <p>Simplifiez votre quotidien numérique et externalisez votre communication pour rester concentré sur votre cœur de métier.</p>
                 <ul>
-                    <li><strong>Audit IT :</strong> Analyse de parc, optimisation réseau et politique de sécurité.</li>
-                    <li><strong>Community Management :</strong> Création de contenu et animation de vos réseaux sociaux.</li>
+                    <li><strong>Conseil & Stratégie IT :</strong> Étude de vos besoins actuels, recommandations d'outils adaptés et accompagnement dans votre transition numérique.</li>
+                    <li><strong>Community Management :</strong> Création de contenu, animation de vos pages et développement de votre visibilité locale.</li>
                     <li><strong>Tarification :</strong> <span class="price-tag">Sur devis</span></li>
                 </ul>
             </div>
 
+            <!-- Carte Particuliers -->
             <div class="card">
                 <h3>🏠 Particuliers</h3>
                 <p>Intervention rapide et pédagogique pour résoudre vos dysfonctionnements matériels et réseaux à domicile.</p>
@@ -296,6 +298,7 @@
                 <p style="font-size: 0.85rem; color: var(--vert-celte); margin-top: 10px;"><em>Déplacement offert (rayon de 15 km de Pleumeleuc).</em></p>
             </div>
 
+            <!-- Carte Linux -->
             <div class="card">
                 <h3>🐧 Sauvetage & Open Source</h3>
                 <p>Ne jetez plus vos anciens PC bloqués sur Windows 10. Optez pour une transition vers un environnement libre (idéal Windows users : Linux Mint, Zorin).</p>
@@ -326,7 +329,7 @@
         </div>
     </section>
 
-    <!-- Section Actualités IT (VOS MARQUEURS SONT PRÉSERVÉS ICI) -->
+    <!-- Section Actualités IT (BALISES PYTHON PRÉSERVÉES) -->
     <section class="news-section" id="actualites">
         <h2>Actualités Informatiques</h2>
         <p class="news-intro">Ce qui bouge dans le monde de l'IT, du mobile et du jeu vidéo — mis à jour automatiquement chaque jour.</p>
@@ -443,7 +446,7 @@
                 return;
             }
 
-            let delay = 300; // Délai initial
+            let delay = 300;
             lines.forEach((line, index) => {
                 setTimeout(() => {
                     line.style.opacity = 1;
@@ -471,12 +474,12 @@
 
             if (step === 1) {
                 // Passage à la question 2
-                qTitle.innerText = "Depuis combien de temps ce problème persiste-t-il ?";
+                qTitle.innerText = "Quel est votre objectif principal aujourd'hui ?";
                 qSub.innerText = "Question 2/2";
                 options.innerHTML = `
-                    <button class="quiz-btn" onclick="nextQuestion(2)">C'est apparu très récemment (moins de 72h)</button>
-                    <button class="quiz-btn" onclick="nextQuestion(2)">Ça fait des semaines que ça traîne...</button>
-                    <button class="quiz-btn" onclick="nextQuestion(2)">C'est suite à une mise à jour ou un téléchargement</button>
+                    <button class="quiz-btn" onclick="nextQuestion(2)">Retrouver un équipement performant et fiable</button>
+                    <button class="quiz-btn" onclick="nextQuestion(2)">Déléguer ma communication pour gagner du temps</button>
+                    <button class="quiz-btn" onclick="nextQuestion(2)">Faire le point global sur mon installation</button>
                 `;
             } else if (step === 2) {
                 // Affichage du résultat final
@@ -486,7 +489,7 @@
                 result.style.display = "block";
                 
                 // On simule une logique d'analyse
-                verdict.innerHTML = "Votre système nécessite un <strong>diagnostic approfondi</strong>. Bonne nouvelle : il est probable qu'une simple désinfection ou une optimisation logicielle suffise sans changer de matériel.";
+                verdict.innerHTML = "J'ai la solution pour vous accompagner de manière personnalisée. <strong>Discutons-en de vive voix !</strong>";
             }
         }
     </script>
