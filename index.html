@@ -48,6 +48,7 @@
             --border-color: #334155;
             --white: #ffffff;
             --accent-blue: #38bdf8;
+            --accent-amber: #f59e0b;
         }
 
         * {
@@ -190,7 +191,7 @@
 
         .services-intro, .news-intro {
             color: var(--text-muted);
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             font-size: 1.1rem;
             max-width: 700px;
             margin-left: auto;
@@ -279,7 +280,7 @@
             border: 1px solid rgba(0, 155, 77, 0.2);
         }
 
-        /* Duo mascotte (belette + manchot open source) */
+        /* Duo mascotte (belette + Tux) */
         .mascot-duo {
             display: flex;
             align-items: center;
@@ -299,7 +300,7 @@
         }
 
         .mascot-duo svg {
-            width: 46px;
+            width: 38px;
             height: 46px;
             flex-shrink: 0;
         }
@@ -311,6 +312,17 @@
         }
 
         /* Actualités IT */
+        .news-subheading {
+            font-size: 1.3rem;
+            color: var(--white);
+            text-align: left;
+            max-width: 1200px;
+            margin: 3rem auto 1.5rem auto;
+            padding-left: 4px;
+        }
+
+        .news-section .cards-container:first-of-type { margin-top: 0; }
+
         .news-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -331,6 +343,9 @@
             background: var(--accent-blue);
         }
 
+        .news-card.mobile::before { background: var(--vert-celte); }
+        .news-card.gaming::before { background: var(--accent-amber); }
+
         .news-date {
             font-size: 0.8rem;
             color: var(--accent-blue);
@@ -338,6 +353,9 @@
             margin-bottom: 0.6rem;
             display: block;
         }
+
+        .news-card.mobile .news-date { color: var(--vert-celte); }
+        .news-card.gaming .news-date { color: var(--accent-amber); }
 
         .news-card h3 {
             font-size: 1.25rem;
@@ -503,15 +521,23 @@
                 </ul>
                 <div class="mascot-duo">
                     <img src="mascotte.jpg" alt="Mascotte Fontaine Breizh Informatique">
-                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Manchot open source">
-                        <ellipse cx="32" cy="36" rx="18" ry="24" fill="#1e293b" stroke="#e2e8f0" stroke-width="2"/>
-                        <ellipse cx="32" cy="40" rx="10" ry="16" fill="#e2e8f0"/>
-                        <circle cx="26" cy="20" r="2.2" fill="#1e293b"/>
-                        <circle cx="38" cy="20" r="2.2" fill="#1e293b"/>
-                        <polygon points="30,25 34,25 32,29" fill="#f59e0b"/>
-                        <ellipse cx="32" cy="58" rx="7" ry="2.5" fill="#f59e0b"/>
+                    <!-- Inspiré de Tux, mascotte de Linux, créée par Larry Ewing (lewing@isc.tamu.edu)
+                         avec The GIMP — image libre de droits, réutilisation/modification autorisée
+                         avec attribution. -->
+                    <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" aria-label="Tux, la mascotte de Linux">
+                        <ellipse cx="35" cy="112" rx="13" ry="6" fill="#f5b400"/>
+                        <ellipse cx="65" cy="112" rx="13" ry="6" fill="#f5b400"/>
+                        <path d="M15 55 C5 65 4 85 14 97 C18 82 18 65 15 55 Z" fill="#0a0a0a"/>
+                        <path d="M85 55 C95 65 96 85 86 97 C82 82 82 65 85 55 Z" fill="#0a0a0a"/>
+                        <path d="M50 5 C25 5 14 40 14 65 C14 96 30 117 50 117 C70 117 86 96 86 65 C86 40 75 5 50 5 Z" fill="#0a0a0a"/>
+                        <ellipse cx="50" cy="72" rx="22" ry="38" fill="#ffffff"/>
+                        <circle cx="40" cy="34" r="7" fill="#ffffff"/>
+                        <circle cx="60" cy="34" r="7" fill="#ffffff"/>
+                        <circle cx="41" cy="35" r="3.4" fill="#0a0a0a"/>
+                        <circle cx="61" cy="35" r="3.4" fill="#0a0a0a"/>
+                        <polygon points="44,44 56,44 50,56" fill="#f5b400"/>
                     </svg>
-                    <span>La belette et son collègue manchot vous accompagnent vers l'open source.</span>
+                    <span>La belette et Tux vous accompagnent vers l'open source.</span>
                 </div>
             </div>
 
@@ -521,8 +547,9 @@
     <!-- Section Actualités IT -->
     <section class="news-section" id="actualites">
         <h2>Actualités Informatiques</h2>
-        <p class="news-intro">Ce qui bouge dans le monde de l'IT et qui peut concerner votre parc informatique.</p>
+        <p class="news-intro">Ce qui bouge dans le monde de l'IT, du mobile et du jeu vidéo — mis à jour automatiquement chaque jour.</p>
 
+        <h3 class="news-subheading">Informatique & Sécurité</h3>
         <div class="cards-container">
             <!-- NEWS:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
             <div class="news-card">
@@ -546,6 +573,58 @@
                 <a href="https://www.cyber.gc.ca/fr/alertes-avis/bulletin-securite-cisco-av26-921" target="_blank" rel="noopener">Lire l'article source →</a>
             </div>
             <!-- NEWS:END -->
+        </div>
+
+        <h3 class="news-subheading">Mobile — Android & iOS</h3>
+        <div class="cards-container">
+            <!-- MOBILE:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
+            <div class="news-card mobile">
+                <span class="news-date">17 septembre 2026</span>
+                <h3>Un bug d'iOS 27 bloque certains iPhone</h3>
+                <p>Un problème identifié sur la dernière version d'iOS 27 peut rendre un iPhone inutilisable. Une solution de contournement existe déjà en attendant un correctif officiel d'Apple.</p>
+                <a href="https://www.tomsguide.fr/ce-bug-dios-27-bloque-votre-iphone-voici-une-solution/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card mobile">
+                <span class="news-date">17 septembre 2026</span>
+                <h3>One UI 9 (Android 17) arrive sur les Galaxy S26</h3>
+                <p>Samsung déploie officiellement sa surcouche One UI 9, basée sur Android 17, sur la série Galaxy S26. Si votre modèle est compatible, la mise à jour devrait arriver progressivement dans les prochains jours.</p>
+                <a href="https://www.tomsguide.fr/one-ui-9-est-la-samsung-deploie-android-17-et-votre-galaxy-est-peut-etre-dans-la-liste/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card mobile">
+                <span class="news-date">17 septembre 2026</span>
+                <h3>Un iPhone "Duo" pliant en préparation chez Apple</h3>
+                <p>Les rumeurs autour d'un iPhone pliant, en plus des iPhone 18 Pro, se précisent pour combler certains manques de la gamme actuelle face à la concurrence Android.</p>
+                <a href="https://www.tomsguide.fr/iphone-duo-apple-veut-voir-plus-grand-et-gommer-ses-principaux-manques/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+            <!-- MOBILE:END -->
+        </div>
+
+        <h3 class="news-subheading">Jeux vidéo</h3>
+        <div class="cards-container">
+            <!-- GAMING:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
+            <div class="news-card gaming">
+                <span class="news-date">16 septembre 2026</span>
+                <h3>GTA 6 dope déjà les ventes de consoles</h3>
+                <p>L'attente autour de GTA 6 se traduit par une nette hausse des ventes de PS5 et Xbox Series chez certains distributeurs, les joueurs anticipant leur mise à niveau avant la sortie du jeu.</p>
+                <a href="https://www.tomsguide.fr/une-croissance-a-deux-chiffres-gta-6-fait-flamber-les-ventes-de-ps5-et-xbox-chez-carrefour/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card gaming">
+                <span class="news-date">16 septembre 2026</span>
+                <h3>Deux jeux gratuits sur l'Epic Games Store</h3>
+                <p>Comme chaque semaine, l'Epic Games Store propose deux jeux à récupérer gratuitement et à garder définitivement dans sa bibliothèque, le temps de l'offre.</p>
+                <a href="https://www.tomsguide.fr/epic-games-store-ne-passez-pas-a-cote-de-ces-deux-jeux-gratuits/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card gaming">
+                <span class="news-date">27 septembre 2026</span>
+                <h3>Silent Hill: Townfall, sortie très attendue</h3>
+                <p>Le nouvel opus de la licence d'horreur culte Silent Hill doit sortir sur PC et PS5 fin septembre, l'une des sorties les plus suivies de ce mois chargé en jeux vidéo.</p>
+                <a href="https://www.millenium.org/guide/111787.html" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+            <!-- GAMING:END -->
         </div>
 
         <p class="news-footnote">Actualités mises à jour automatiquement chaque jour — dernière actualisation : <span id="news-updated">18/09/2026</span>.</p>
