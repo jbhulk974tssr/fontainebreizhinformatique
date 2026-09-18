@@ -122,14 +122,22 @@
         .tech-item i { font-size: 1.8rem; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- 3. MINI-QUIZ --- */
-        .quiz-section { padding: 4rem 5%; background: #172033; border-bottom: 1px solid var(--border-color); }
-        .quiz-box {
-            max-width: 600px; margin: 0 auto; background: var(--bg-card);
-            border: 1px solid var(--border-color); border-radius: 8px;
-            padding: 2.5rem; text-align: center; position: relative; overflow: hidden;
-            border-top: 4px solid var(--accent-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        /* --- 3. SECTION INTERACTIVE (QUIZ + CITATION) --- */
+        .interactive-section { padding: 4rem 5%; background: #172033; border-bottom: 1px solid var(--border-color); }
+        .interaction-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+            max-width: 1200px; margin: 0 auto;
         }
+        
+        .interactive-box {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 2.5rem; position: relative; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; justify-content: center;
+        }
+
+        /* Quiz Box */
+        .quiz-box { border-top: 4px solid var(--accent-blue); text-align: center; }
         .quiz-box h3 { color: var(--white); font-size: 1.4rem; margin-bottom: 1.5rem; }
         .quiz-options { display: flex; flex-direction: column; gap: 1rem; }
         .quiz-btn {
@@ -140,6 +148,12 @@
         .quiz-btn:hover { background: var(--vert-celte); border-color: var(--vert-celte); color: #fff; }
         .quiz-result { display: none; margin-top: 1rem; }
         .quiz-result p { font-size: 1.1rem; color: var(--vert-celte); font-weight: 700; margin-bottom: 1.5rem; }
+
+        /* Quote Box */
+        .quote-box { border-top: 4px solid var(--accent-amber); text-align: center; }
+        .quote-box h3 { color: var(--white); font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 10px;}
+        .quote-text { font-size: 1.1rem; color: var(--text-muted); font-style: italic; margin-bottom: 1rem; line-height: 1.6; }
+        .quote-author { color: var(--vert-celte); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
         /* Sections Prestations & Actus */
         .services-section, .news-section { padding: 5rem 5%; text-align: center; }
@@ -186,6 +200,10 @@
         .social-links a:hover { color: var(--white); border-color: var(--vert-celte); background: rgba(0, 155, 77, 0.05); }
         .mentions-legales { font-size: 0.8rem; color: #64748b; max-width: 800px; margin: 2rem auto 0 auto; line-height: 1.8; }
 
+        @media (max-width: 900px) {
+            .interaction-grid { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .hero { padding: 4rem 1.5rem; }
@@ -204,7 +222,7 @@
         <div class="boot-line">[ <span class="boot-ok">OK</span> ] Mounting /dev/sda1 (Local Infrastructure)...</div>
         <div class="boot-line">[ <span class="boot-ok">OK</span> ] Loading IT Diagnostics Modules...</div>
         <div class="boot-line">[ <span class="boot-ok">OK</span> ] Initializing Secure Network Protocols...</div>
-        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Bypassing Windows 10 limitations...</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Bypassing Windows limitations...</div>
         <div class="boot-line">[ <span class="boot-ok">OK</span> ] Booting Fontaine Breizh Informatique Services...</div>
     </div>
 
@@ -229,42 +247,54 @@
         <a href="mailto:contact@fontainebreizhinformatique.fr" class="btn" id="contact">Demander un diagnostic</a>
     </header>
 
-    <!-- 2. BANDEAU TECH STACK ACTUALISÉ -->
+    <!-- 2. BANDEAU TECH STACK (Ubuntu et Android ajoutés, Mac retiré) -->
     <div class="tech-stack-container">
         <div class="tech-track">
             <!-- On double le contenu pour l'effet de défilement infini -->
-            <div class="tech-item"><i class="devicon-debian-plain"></i> Debian 12</div>
-            <div class="tech-item"><i class="devicon-ubuntu-plain"></i> Linux Mint / Zorin OS</div>
+            <div class="tech-item"><i class="devicon-ubuntu-plain"></i> Ubuntu</div>
+            <div class="tech-item"><i class="devicon-linux-plain"></i> Linux Mint / Zorin OS</div>
             <div class="tech-item">💡 Conseil & Stratégie IT</div>
             <div class="tech-item">📱 Animation Réseaux Sociaux</div>
             <div class="tech-item">🤝 Accompagnement Numérique</div>
-            <div class="tech-item"><i class="devicon-apple-original"></i> Dépannage Mac/iOS</div>
+            <div class="tech-item"><i class="devicon-android-plain"></i> Dépannage Android</div>
             
-            <div class="tech-item"><i class="devicon-debian-plain"></i> Debian 12</div>
-            <div class="tech-item"><i class="devicon-ubuntu-plain"></i> Linux Mint / Zorin OS</div>
+            <div class="tech-item"><i class="devicon-ubuntu-plain"></i> Ubuntu</div>
+            <div class="tech-item"><i class="devicon-linux-plain"></i> Linux Mint / Zorin OS</div>
             <div class="tech-item">💡 Conseil & Stratégie IT</div>
             <div class="tech-item">📱 Animation Réseaux Sociaux</div>
             <div class="tech-item">🤝 Accompagnement Numérique</div>
-            <div class="tech-item"><i class="devicon-apple-original"></i> Dépannage Mac/iOS</div>
+            <div class="tech-item"><i class="devicon-android-plain"></i> Dépannage Android</div>
         </div>
     </div>
 
-    <!-- 3. MINI-QUIZ (Lead Magnet) -->
-    <section class="quiz-section">
-        <div class="quiz-box" id="quiz-container">
-            <h3 id="quiz-question">🛠️ Votre outil informatique vous freine au quotidien ?</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;" id="quiz-subtitle">Passez ce test rapide en 2 questions pour un premier diagnostic.</p>
+    <!-- 3. SECTION INTERACTIVE (Quiz à gauche, Citation à droite) -->
+    <section class="interactive-section">
+        <div class="interaction-grid">
             
-            <div class="quiz-options" id="quiz-options">
-                <button class="quiz-btn" onclick="nextQuestion(1)">Mon PC est trop lent ou plante souvent</button>
-                <button class="quiz-btn" onclick="nextQuestion(1)">Mes réseaux sociaux manquent de visibilité</button>
-                <button class="quiz-btn" onclick="nextQuestion(1)">J'ai besoin de conseils pour renouveler mon matériel</button>
+            <!-- Le Quiz (Lead Magnet) -->
+            <div class="interactive-box quiz-box" id="quiz-container">
+                <h3 id="quiz-question">🛠️ Votre outil informatique vous freine au quotidien ?</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;" id="quiz-subtitle">Passez ce test rapide en 2 questions pour un premier diagnostic.</p>
+                
+                <div class="quiz-options" id="quiz-options">
+                    <button class="quiz-btn" onclick="nextQuestion(1)">Mon PC est trop lent ou plante souvent</button>
+                    <button class="quiz-btn" onclick="nextQuestion(1)">Mes réseaux sociaux manquent de visibilité</button>
+                    <button class="quiz-btn" onclick="nextQuestion(1)">J'ai besoin de conseils pour renouveler mon matériel</button>
+                </div>
+
+                <div class="quiz-result" id="quiz-result">
+                    <p id="quiz-verdict">Diagnostic en cours...</p>
+                    <a href="mailto:contact@fontainebreizhinformatique.fr" class="btn">Prendre RDV (Déplacement offert à 15km)</a>
+                </div>
             </div>
 
-            <div class="quiz-result" id="quiz-result">
-                <p id="quiz-verdict">Diagnostic en cours...</p>
-                <a href="mailto:contact@fontainebreizhinformatique.fr" class="btn">Prendre RDV (Déplacement offert à 15km)</a>
+            <!-- La Citation Geek du jour -->
+            <div class="interactive-box quote-box">
+                <h3>💬 La pépite geek du jour</h3>
+                <p class="quote-text" id="daily-quote-text">Chargement de la sagesse informatique...</p>
+                <p class="quote-author">#PauseCafé</p>
             </div>
+
         </div>
     </section>
 
@@ -274,7 +304,7 @@
         <p class="services-intro">Approche 100% Conseil et Service. Aucune vente de matériel, optimisation de l'existant.</p>
 
         <div class="cards-container">
-            <!-- Carte Professionnels (Mise en avant Conseil / CM) -->
+            <!-- Carte Professionnels -->
             <div class="card">
                 <h3>🏢 Entreprises & Pros</h3>
                 <p>Simplifiez votre quotidien numérique et externalisez votre communication pour rester concentré sur votre cœur de métier.</p>
@@ -332,7 +362,7 @@
     <!-- Section Actualités IT (BALISES PYTHON PRÉSERVÉES) -->
     <section class="news-section" id="actualites">
         <h2>Actualités Informatiques</h2>
-        <p class="news-intro">Ce qui bouge dans le monde de l'IT, du mobile et du jeu vidéo — mis à jour automatiquement chaque jour.</p>
+        <p class="news-intro">Ce qui bouge dans le monde de l'IT, du mobile et du jeu vidéo.</p>
 
         <h3 class="news-subheading">Informatique & Sécurité</h3>
         <div class="cards-container">
@@ -433,38 +463,36 @@
 
     <a href="mailto:contact@fontainebreizhinformatique.fr" class="floating-btn">✉️ Contact</a>
 
-    <!-- SCRIPTS POUR LES ANIMATIONS -->
+    <!-- SCRIPTS POUR LES ANIMATIONS & LA CITATION -->
     <script>
         // 1. Script du Boot Terminal
         document.addEventListener("DOMContentLoaded", () => {
             const bootScreen = document.getElementById("boot-screen");
             const lines = document.querySelectorAll(".boot-line");
             
-            // Si l'utilisateur a déjà vu le boot pendant cette session, on le masque direct
             if(sessionStorage.getItem('bootSeen')) {
                 bootScreen.style.display = 'none';
-                return;
+            } else {
+                let delay = 300;
+                lines.forEach((line, index) => {
+                    setTimeout(() => { line.style.opacity = 1; }, delay);
+                    delay += Math.random() * 400 + 200;
+                });
+
+                setTimeout(() => {
+                    bootScreen.style.opacity = 0;
+                    setTimeout(() => {
+                        bootScreen.style.display = 'none';
+                        sessionStorage.setItem('bootSeen', 'true');
+                    }, 500);
+                }, delay + 600);
             }
-
-            let delay = 300;
-            lines.forEach((line, index) => {
-                setTimeout(() => {
-                    line.style.opacity = 1;
-                }, delay);
-                delay += Math.random() * 400 + 200; // Aléatoire pour simuler un vrai boot
-            });
-
-            // Disparition du terminal
-            setTimeout(() => {
-                bootScreen.style.opacity = 0;
-                setTimeout(() => {
-                    bootScreen.style.display = 'none';
-                    sessionStorage.setItem('bootSeen', 'true');
-                }, 500);
-            }, delay + 600);
+            
+            // 2. Gestionnaire de la Citation du jour
+            afficherCitation();
         });
 
-        // 2. Logique du Mini-Quiz
+        // Logique du Mini-Quiz
         function nextQuestion(step) {
             const qTitle = document.getElementById("quiz-question");
             const qSub = document.getElementById("quiz-subtitle");
@@ -473,7 +501,6 @@
             const verdict = document.getElementById("quiz-verdict");
 
             if (step === 1) {
-                // Passage à la question 2
                 qTitle.innerText = "Quel est votre objectif principal aujourd'hui ?";
                 qSub.innerText = "Question 2/2";
                 options.innerHTML = `
@@ -482,15 +509,43 @@
                     <button class="quiz-btn" onclick="nextQuestion(2)">Faire le point global sur mon installation</button>
                 `;
             } else if (step === 2) {
-                // Affichage du résultat final
                 qTitle.innerText = "Analyse terminée ✅";
                 qSub.style.display = "none";
                 options.style.display = "none";
                 result.style.display = "block";
-                
-                // On simule une logique d'analyse
                 verdict.innerHTML = "J'ai la solution pour vous accompagner de manière personnalisée. <strong>Discutons-en de vive voix !</strong>";
             }
+        }
+
+        // 3. Algorithme de la citation informatique (Change automatiquement à minuit)
+        function afficherCitation() {
+            const citations = [
+                "Un jour Chuck Norris a fait un 'rm -rf /' et le serveur s'est excusé.",
+                "Il n'y a pas de cloud, c'est juste l'ordinateur de quelqu'un d'autre.",
+                "Le matériel, c'est la partie de l'ordinateur qui prend les coups quand le logiciel plante.",
+                "Il y a 10 types de personnes dans le monde : ceux qui comprennent le binaire et les autres.",
+                "Si ça marche du premier coup, c'est qu'il y a un bug que tu n'as pas encore vu.",
+                "Je ne suis pas asocial, je suis juste 'user friendly' avec très peu de monde.",
+                "Chuck Norris ne fait pas de mises à jour. Il dit à son PC ce qu'il doit faire.",
+                "L'intelligence artificielle n'a aucune chance face à la stupidité naturelle.",
+                "Un clavier AZERTY en vaut deux.",
+                "Les ordinateurs sont comme l'air conditionné : ils arrêtent de fonctionner quand on ouvre les fenêtres (Windows).",
+                "Un mot de passe, c'est comme une brosse à dents. On ne le prête pas, et on le change souvent.",
+                "Pour comprendre la récursivité, il faut d'abord comprendre la récursivité.",
+                "Le code, c'est comme la poésie. Sauf que la poésie n'affiche jamais d'erreur à la ligne 42."
+            ];
+
+            // Calcul du jour actuel dans l'année (de 1 à 365)
+            const now = new Date();
+            const debutAnnee = new Date(now.getFullYear(), 0, 0);
+            const difference = (now - debutAnnee) + ((debutAnnee.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+            const jourDeLAnnee = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+            // On sélectionne la citation en fonction du jour (modulo permet de boucler sur le tableau)
+            const citationDuJour = citations[jourDeLAnnee % citations.length];
+            
+            // Injection dans le HTML
+            document.getElementById("daily-quote-text").innerText = `« ${citationDuJour} »`;
         }
     </script>
 </body>
