@@ -8,15 +8,16 @@
     <title>Fontaine Breizh Informatique | Expert IT & Digital à Pleumeleuc</title>
     <meta name="description" content="Assistance informatique pour particuliers et infogérance/Community Management pour professionnels sur Pleumeleuc et le bassin rennais. Expertises IT et Réseaux.">
 
-    <!-- Balises Open Graph pour les réseaux sociaux -->
+    <!-- Balises Open Graph -->
     <meta property="og:title" content="Fontaine Breizh Informatique - Votre expert IT local">
     <meta property="og:description" content="Audit réseau, dépannage PC, transition Linux et gestion de vos réseaux sociaux sur le bassin rennais.">
     <meta property="og:image" content="https://www.fontainebreizhinformatique.fr/logo.jpg">
     <meta property="og:url" content="https://www.fontainebreizhinformatique.fr">
     <meta property="og:type" content="website">
 
-    <!-- Police tech et moderne -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <!-- Police tech et icônes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -51,411 +52,161 @@
             --accent-amber: #f59e0b;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Barre de navigation */
+        /* --- 1. EASTER EGG : BOOT TERMINAL --- */
+        #boot-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            padding: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: opacity 0.5s ease;
+        }
+        .boot-line { opacity: 0; }
+        .boot-ok { color: #00ff00; font-weight: bold; }
+        .boot-fail { color: #ff0000; font-weight: bold; }
+
+        /* Navbar & Hero (Existant optimisé) */
         .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 5%;
-            background-color: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            flex-wrap: wrap;
-            gap: 1rem;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 5%; background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 1rem;
         }
-
-        .logo-nav {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-nav img {
-            height: 40px;
-            border-radius: 4px;
-        }
-
-        .brand-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
+        .logo-nav { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-nav img { height: 40px; border-radius: 4px; }
+        .brand-name { font-size: 1.1rem; font-weight: 700; color: var(--white); }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: 0.2s; }
         .nav-links a:hover { color: var(--vert-celte); }
 
-        /* Section Hero (Accueil) */
-        .hero {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
-            border-bottom: 1px solid var(--border-color);
-        }
+        .hero { text-align: center; padding: 6rem 2rem 4rem 2rem; background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%); border-bottom: 1px solid var(--border-color); }
+        .hero-logo { height: 140px; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 0 30px var(--vert-celte-glow); border: 2px solid var(--border-color); }
+        .hero h1 { font-size: 3rem; font-weight: 900; max-width: 900px; margin: 0 auto 1.5rem auto; color: var(--white); line-height: 1.2; letter-spacing: -1px; }
+        .hero h1 span { color: var(--vert-celte); text-shadow: 0 0 20px var(--vert-celte-glow); }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2.5rem auto; color: var(--text-muted); }
+        
+        .btn { display: inline-block; background: transparent; color: var(--vert-celte); padding: 14px 30px; text-decoration: none; border-radius: 6px; font-weight: 700; border: 2px solid var(--vert-celte); transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;}
+        .btn:hover { background: var(--vert-celte); color: var(--white); box-shadow: 0 0 20px var(--vert-celte-glow); }
 
-        .hero-logo {
-            height: 140px;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            box-shadow: 0 0 30px var(--vert-celte-glow);
-            border: 2px solid var(--border-color);
+        /* --- 2. TECH STACK BANNER --- */
+        .tech-stack-container {
+            width: 100%; overflow: hidden; background: #0b1121; padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color); display: flex; align-items: center;
         }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            max-width: 900px;
-            margin: 0 auto 1.5rem auto;
-            color: var(--white);
-            line-height: 1.2;
-            letter-spacing: -1px;
+        .tech-track {
+            display: flex; gap: 4rem; white-space: nowrap;
+            animation: scroll 25s linear infinite;
         }
-
-        .hero h1 span {
-            color: var(--vert-celte);
-            text-shadow: 0 0 20px var(--vert-celte-glow);
+        .tech-item {
+            display: flex; align-items: center; gap: 10px;
+            color: var(--text-muted); font-weight: 500; font-size: 1.1rem;
+            opacity: 0.7; transition: opacity 0.3s;
         }
+        .tech-item:hover { opacity: 1; color: var(--white); }
+        .tech-item i { font-size: 1.8rem; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem auto;
-            color: var(--text-muted);
+        /* --- 3. MINI-QUIZ --- */
+        .quiz-section { padding: 4rem 5%; background: #172033; border-bottom: 1px solid var(--border-color); }
+        .quiz-box {
+            max-width: 600px; margin: 0 auto; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 2.5rem; text-align: center; position: relative; overflow: hidden;
+            border-top: 4px solid var(--accent-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
-        /* Boutons Tech */
-        .btn {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--vert-celte);
-            padding: 14px 30px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            border: 2px solid var(--vert-celte);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .quiz-box h3 { color: var(--white); font-size: 1.4rem; margin-bottom: 1.5rem; }
+        .quiz-options { display: flex; flex-direction: column; gap: 1rem; }
+        .quiz-btn {
+            background: rgba(255,255,255,0.05); border: 1px solid var(--border-color);
+            color: var(--text-light); padding: 12px; border-radius: 6px;
+            cursor: pointer; font-size: 1rem; transition: 0.2s; font-family: 'Inter', sans-serif;
         }
+        .quiz-btn:hover { background: var(--vert-celte); border-color: var(--vert-celte); color: #fff; }
+        .quiz-result { display: none; margin-top: 1rem; }
+        .quiz-result p { font-size: 1.1rem; color: var(--vert-celte); font-weight: 700; margin-bottom: 1.5rem; }
 
-        .btn:hover {
-            background-color: var(--vert-celte);
-            color: var(--white);
-            box-shadow: 0 0 20px var(--vert-celte-glow);
-        }
+        /* Sections existantes (Prestations & Actus) */
+        .services-section, .news-section { padding: 5rem 5%; text-align: center; }
+        .services-section h2, .news-section h2 { font-size: 2.2rem; margin-bottom: 1rem; color: var(--white); }
+        .services-intro, .news-intro { color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; max-width: 700px; margin-inline: auto; }
+        
+        .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--bg-card); padding: 2.5rem; border-radius: 8px; text-align: left; border: 1px solid var(--border-color); transition: 0.3s; position: relative; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--vert-celte); }
+        .card:hover { transform: translateY(-5px); border-color: var(--vert-celte); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card h3 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--white); display: flex; align-items: center; gap: 10px; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .card ul { list-style: none; margin: 1.5rem 0; }
+        .card ul li { margin-bottom: 1rem; padding-left: 1.8rem; position: relative; font-size: 0.95rem; }
+        .card ul li::before { content: '▹'; color: var(--vert-celte); font-size: 1.2rem; position: absolute; left: 0; top: -2px; }
+        .price-tag { font-weight: 700; color: var(--vert-celte); background: rgba(0, 155, 77, 0.1); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(0, 155, 77, 0.2); }
 
-        /* Grille des services */
-        .services-section, .news-section {
-            padding: 5rem 5%;
-            text-align: center;
-        }
+        .mascot-duo { display: flex; align-items: center; gap: 1.2rem; margin-top: 1.8rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-color); }
+        .mascot-duo img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--vert-celte); flex-shrink: 0; }
+        .mascot-duo svg { width: 38px; height: 46px; flex-shrink: 0; }
+        .mascot-duo span { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
 
-        .services-section h2, .news-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .services-intro, .news-intro {
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--bg-card);
-            padding: 2.5rem;
-            border-radius: 8px;
-            text-align: left;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Liseré vert en haut de la carte */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--vert-celte);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--vert-celte);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card ul {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .card ul li {
-            margin-bottom: 1rem;
-            padding-left: 1.8rem;
-            position: relative;
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        .card ul li::before {
-            content: '▹';
-            color: var(--vert-celte);
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-
-        .price-tag {
-            font-weight: 700;
-            color: var(--vert-celte);
-            background: rgba(0, 155, 77, 0.1);
-            padding: 2px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 155, 77, 0.2);
-        }
-
-        /* Duo mascotte (belette + Tux) */
-        .mascot-duo {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            margin-top: 1.8rem;
-            padding-top: 1.5rem;
-            border-top: 1px dashed var(--border-color);
-        }
-
-        .mascot-duo img {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--vert-celte);
-            flex-shrink: 0;
-        }
-
-        .mascot-duo svg {
-            width: 38px;
-            height: 46px;
-            flex-shrink: 0;
-        }
-
-        .mascot-duo span {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* Actualités IT */
-        .news-subheading {
-            font-size: 1.3rem;
-            color: var(--white);
-            text-align: left;
-            max-width: 1200px;
-            margin: 3rem auto 1.5rem auto;
-            padding-left: 4px;
-        }
-
+        .news-subheading { font-size: 1.3rem; color: var(--white); text-align: left; max-width: 1200px; margin: 3rem auto 1.5rem auto; padding-left: 4px; }
         .news-section .cards-container:first-of-type { margin-top: 0; }
-
-        .news-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--accent-blue);
-        }
-
+        .news-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; text-align: left; position: relative; }
+        .news-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent-blue); }
         .news-card.mobile::before { background: var(--vert-celte); }
         .news-card.gaming::before { background: var(--accent-amber); }
-
-        .news-date {
-            font-size: 0.8rem;
-            color: var(--accent-blue);
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-            display: block;
-        }
-
+        .news-date { font-size: 0.8rem; color: var(--accent-blue); font-weight: 700; margin-bottom: 0.6rem; display: block; }
         .news-card.mobile .news-date { color: var(--vert-celte); }
         .news-card.gaming .news-date { color: var(--accent-amber); }
-
-        .news-card h3 {
-            font-size: 1.25rem;
-            color: var(--white);
-            margin-bottom: 0.8rem;
-        }
-
-        .news-card p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 1rem;
-        }
-
-        .news-card a {
-            color: var(--vert-celte);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
+        .news-card h3 { font-size: 1.25rem; color: var(--white); margin-bottom: 0.8rem; }
+        .news-card p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem; }
+        .news-card a { color: var(--vert-celte); text-decoration: none; font-size: 0.85rem; font-weight: 700; }
         .news-card a:hover { text-decoration: underline; }
+        .news-footnote { margin-top: 3rem; font-size: 0.8rem; color: #64748b; }
 
-        .news-footnote {
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #64748b;
-        }
+        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: var(--vert-celte); color: var(--white); padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px var(--vert-celte-glow); z-index: 1000; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+        .floating-btn:hover { transform: scale(1.05); }
 
-        /* Bouton Flottant */
-        .floating-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--vert-celte);
-            color: var(--white);
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            box-shadow: 0 4px 15px var(--vert-celte-glow);
-            z-index: 1000;
-            transition: transform 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        footer { background-color: #0b1121; text-align: center; padding: 4rem 2rem 2rem 2rem; border-top: 1px solid var(--border-color); }
+        .social-links { margin-bottom: 2rem; }
+        .social-links a { display: inline-block; color: var(--text-muted); border: 1px solid var(--border-color); padding: 10px 24px; text-decoration: none; border-radius: 6px; margin: 0 10px; font-weight: 500; transition: 0.3s; }
+        .social-links a:hover { color: var(--white); border-color: var(--vert-celte); background: rgba(0, 155, 77, 0.05); }
+        .mentions-legales { font-size: 0.8rem; color: #64748b; max-width: 800px; margin: 2rem auto 0 auto; line-height: 1.8; }
 
-        .floating-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* Pied de page */
-        footer {
-            background-color: #0b1121;
-            text-align: center;
-            padding: 4rem 2rem 2rem 2rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .social-links {
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            display: inline-block;
-            color: var(--text-muted);
-            border: 1px solid var(--border-color);
-            padding: 10px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 0 10px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--white);
-            border-color: var(--vert-celte);
-            background: rgba(0, 155, 77, 0.05);
-        }
-
-        .mentions-legales {
-            font-size: 0.8rem;
-            color: #64748b;
-            max-width: 800px;
-            margin: 2rem auto 0 auto;
-            line-height: 1.8;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .hero { padding: 4rem 1.5rem; }
             .brand-name { font-size: 1rem; }
             .hero-logo { height: 100px; }
             .nav-links { gap: 1rem; font-size: 0.85rem; }
+            .tech-track { gap: 2rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- 1. EASTER EGG : ECRAN DE BOOT -->
+    <div id="boot-screen">
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Started BIOS System Check...</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Mounting /dev/sda1 (Local Infrastructure)...</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Loading IT Diagnostics Modules...</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Initializing Secure Network Protocols...</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Bypassing Windows 10 limitations...</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Booting Fontaine Breizh Informatique Services...</div>
+    </div>
 
     <!-- Barre de navigation -->
     <nav class="navbar">
@@ -478,14 +229,51 @@
         <a href="mailto:contact@fontainebreizhinformatique.fr" class="btn" id="contact">Demander un diagnostic</a>
     </header>
 
+    <!-- 2. BANDEAU TECH STACK -->
+    <div class="tech-stack-container">
+        <div class="tech-track">
+            <!-- On double le contenu pour l'effet de défilement infini -->
+            <div class="tech-item"><i class="devicon-debian-plain"></i> Debian 12</div>
+            <div class="tech-item"><i class="devicon-ubuntu-plain"></i> Linux Mint / Zorin OS</div>
+            <div class="tech-item"><i class="devicon-windows8-original"></i> Windows Server</div>
+            <div class="tech-item"><i class="devicon-network-wired"></i> Réseaux & pfSense</div>
+            <div class="tech-item"><i class="devicon-bash-plain"></i> Scripts & Automatisation</div>
+            <div class="tech-item"><i class="devicon-apple-original"></i> Dépannage Mac/iOS</div>
+            
+            <div class="tech-item"><i class="devicon-debian-plain"></i> Debian 12</div>
+            <div class="tech-item"><i class="devicon-ubuntu-plain"></i> Linux Mint / Zorin OS</div>
+            <div class="tech-item"><i class="devicon-windows8-original"></i> Windows Server</div>
+            <div class="tech-item"><i class="devicon-network-wired"></i> Réseaux & pfSense</div>
+            <div class="tech-item"><i class="devicon-bash-plain"></i> Scripts & Automatisation</div>
+            <div class="tech-item"><i class="devicon-apple-original"></i> Dépannage Mac/iOS</div>
+        </div>
+    </div>
+
+    <!-- 3. MINI-QUIZ (Lead Magnet) -->
+    <section class="quiz-section">
+        <div class="quiz-box" id="quiz-container">
+            <h3 id="quiz-question">🛠️ Votre PC vous donne du fil à retordre ?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;" id="quiz-subtitle">Passez ce test rapide en 2 questions pour un pré-diagnostic.</p>
+            
+            <div class="quiz-options" id="quiz-options">
+                <button class="quiz-btn" onclick="nextQuestion(1)">Mon PC rame au démarrage et à l'ouverture des pages</button>
+                <button class="quiz-btn" onclick="nextQuestion(1)">J'ai des pubs intempestives ou des comportements bizarres</button>
+                <button class="quiz-btn" onclick="nextQuestion(1)">Mon réseau Wi-Fi coupe ou est très faible</button>
+            </div>
+
+            <div class="quiz-result" id="quiz-result">
+                <p id="quiz-verdict">Diagnostic en cours...</p>
+                <a href="mailto:contact@fontainebreizhinformatique.fr" class="btn">Prendre RDV (Déplacement offert à 15km)</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Section Prestations -->
     <section class="services-section" id="prestations">
         <h2>Mes Domaines d'Expertise</h2>
         <p class="services-intro">Approche 100% Conseil et Service. Aucune vente de matériel, optimisation de l'existant.</p>
 
         <div class="cards-container">
-
-            <!-- Carte Professionnels (Mise en avant B2B) -->
             <div class="card">
                 <h3>🏢 Entreprises & Pros</h3>
                 <p>Sécurisez votre IT et externalisez la gestion de vos réseaux sociaux pour rester concentré sur votre cœur de métier.</p>
@@ -496,7 +284,6 @@
                 </ul>
             </div>
 
-            <!-- Carte Particuliers -->
             <div class="card">
                 <h3>🏠 Particuliers</h3>
                 <p>Intervention rapide et pédagogique pour résoudre vos dysfonctionnements matériels et réseaux à domicile.</p>
@@ -509,10 +296,9 @@
                 <p style="font-size: 0.85rem; color: var(--vert-celte); margin-top: 10px;"><em>Déplacement offert (rayon de 15 km de Pleumeleuc).</em></p>
             </div>
 
-            <!-- Carte Linux -->
             <div class="card">
                 <h3>🐧 Sauvetage & Open Source</h3>
-                <p>Ne jetez plus vos anciens PC bloqués sur Windows 10. Optez pour une transition vers un environnement libre.</p>
+                <p>Ne jetez plus vos anciens PC bloqués sur Windows 10. Optez pour une transition vers un environnement libre (idéal Windows users : Linux Mint, Zorin).</p>
                 <ul>
                     <li>Déploiement d'OS Linux sécurisés.</li>
                     <li>Système léger, rapide et 100% gratuit.</li>
@@ -521,9 +307,6 @@
                 </ul>
                 <div class="mascot-duo">
                     <img src="mascotte.jpg" alt="Mascotte Fontaine Breizh Informatique">
-                    <!-- Inspiré de Tux, mascotte de Linux, créée par Larry Ewing (lewing@isc.tamu.edu)
-                         avec The GIMP — image libre de droits, réutilisation/modification autorisée
-                         avec attribution. -->
                     <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" aria-label="Tux, la mascotte de Linux">
                         <ellipse cx="35" cy="112" rx="13" ry="6" fill="#f5b400"/>
                         <ellipse cx="65" cy="112" rx="13" ry="6" fill="#f5b400"/>
@@ -540,11 +323,10 @@
                     <span>La belette et Tux vous accompagnent vers l'open source.</span>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Section Actualités IT -->
+    <!-- Section Actualités IT (VOS MARQUEURS SONT PRÉSERVÉS ICI) -->
     <section class="news-section" id="actualites">
         <h2>Actualités Informatiques</h2>
         <p class="news-intro">Ce qui bouge dans le monde de l'IT, du mobile et du jeu vidéo — mis à jour automatiquement chaque jour.</p>
@@ -646,8 +428,67 @@
         </div>
     </footer>
 
-    <!-- Bouton Flottant -->
     <a href="mailto:contact@fontainebreizhinformatique.fr" class="floating-btn">✉️ Contact</a>
 
+    <!-- SCRIPTS POUR LES ANIMATIONS -->
+    <script>
+        // 1. Script du Boot Terminal
+        document.addEventListener("DOMContentLoaded", () => {
+            const bootScreen = document.getElementById("boot-screen");
+            const lines = document.querySelectorAll(".boot-line");
+            
+            // Si l'utilisateur a déjà vu le boot pendant cette session, on le masque direct
+            if(sessionStorage.getItem('bootSeen')) {
+                bootScreen.style.display = 'none';
+                return;
+            }
+
+            let delay = 300; // Délai initial
+            lines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.opacity = 1;
+                }, delay);
+                delay += Math.random() * 400 + 200; // Aléatoire pour simuler un vrai boot
+            });
+
+            // Disparition du terminal
+            setTimeout(() => {
+                bootScreen.style.opacity = 0;
+                setTimeout(() => {
+                    bootScreen.style.display = 'none';
+                    sessionStorage.setItem('bootSeen', 'true');
+                }, 500);
+            }, delay + 600);
+        });
+
+        // 2. Logique du Mini-Quiz
+        function nextQuestion(step) {
+            const qTitle = document.getElementById("quiz-question");
+            const qSub = document.getElementById("quiz-subtitle");
+            const options = document.getElementById("quiz-options");
+            const result = document.getElementById("quiz-result");
+            const verdict = document.getElementById("quiz-verdict");
+
+            if (step === 1) {
+                // Passage à la question 2
+                qTitle.innerText = "Depuis combien de temps ce problème persiste-t-il ?";
+                qSub.innerText = "Question 2/2";
+                options.innerHTML = `
+                    <button class="quiz-btn" onclick="nextQuestion(2)">C'est apparu très récemment (moins de 72h)</button>
+                    <button class="quiz-btn" onclick="nextQuestion(2)">Ça fait des semaines que ça traîne...</button>
+                    <button class="quiz-btn" onclick="nextQuestion(2)">C'est suite à une mise à jour ou un téléchargement</button>
+                `;
+            } else if (step === 2) {
+                // Affichage du résultat final
+                qTitle.innerText = "Analyse terminée ✅";
+                qSub.style.display = "none";
+                options.style.display = "none";
+                result.style.display = "block";
+                
+                // On simule une logique d'analyse
+                verdict.innerHTML = "Votre système nécessite un <strong>diagnostic approfondi</strong>. Bonne nouvelle : il est probable qu'une simple désinfection ou une optimisation logicielle suffise sans changer de matériel.";
+            }
+        }
+    </script>
 </body>
 </html>
