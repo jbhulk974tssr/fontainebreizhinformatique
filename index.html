@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Local -->
     <title>Fontaine Breizh Informatique | Expert IT & Digital à Pleumeleuc</title>
     <meta name="description" content="Assistance informatique pour particuliers et infogérance/Community Management pour professionnels sur Pleumeleuc et le bassin rennais. Expertises IT et Réseaux.">
-    
+
     <!-- Balises Open Graph pour les réseaux sociaux -->
     <meta property="og:title" content="Fontaine Breizh Informatique - Votre expert IT local">
     <meta property="og:description" content="Audit réseau, dépannage PC, transition Linux et gestion de vos réseaux sociaux sur le bassin rennais.">
@@ -47,6 +47,7 @@
             --text-muted: #94a3b8;
             --border-color: #334155;
             --white: #ffffff;
+            --accent-blue: #38bdf8;
         }
 
         * {
@@ -54,6 +55,8 @@
             margin: 0;
             padding: 0;
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -74,6 +77,8 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo-nav {
@@ -94,6 +99,22 @@
             color: var(--white);
             letter-spacing: 0.5px;
         }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover { color: var(--vert-celte); }
 
         /* Section Hero (Accueil) */
         .hero {
@@ -148,7 +169,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .btn:hover {
             background-color: var(--vert-celte);
             color: var(--white);
@@ -156,21 +177,24 @@
         }
 
         /* Grille des services */
-        .services-section {
+        .services-section, .news-section {
             padding: 5rem 5%;
             text-align: center;
         }
 
-        .services-section h2 {
+        .services-section h2, .news-section h2 {
             font-size: 2.2rem;
             margin-bottom: 1rem;
             color: var(--white);
         }
 
-        .services-intro {
+        .services-intro, .news-intro {
             color: var(--text-muted);
             margin-bottom: 4rem;
             font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cards-container {
@@ -255,6 +279,93 @@
             border: 1px solid rgba(0, 155, 77, 0.2);
         }
 
+        /* Duo mascotte (belette + manchot open source) */
+        .mascot-duo {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-top: 1.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .mascot-duo img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--vert-celte);
+            flex-shrink: 0;
+        }
+
+        .mascot-duo svg {
+            width: 46px;
+            height: 46px;
+            flex-shrink: 0;
+        }
+
+        .mascot-duo span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Actualités IT */
+        .news-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-blue);
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .news-card h3 {
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+        }
+
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-card a {
+            color: var(--vert-celte);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .news-card a:hover { text-decoration: underline; }
+
+        .news-footnote {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
         /* Bouton Flottant */
         .floating-btn {
             position: fixed;
@@ -322,6 +433,7 @@
             .hero { padding: 4rem 1.5rem; }
             .brand-name { font-size: 1rem; }
             .hero-logo { height: 100px; }
+            .nav-links { gap: 1rem; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -333,6 +445,11 @@
             <img src="logo.jpg" alt="Logo">
             <span class="brand-name">FONTAINE BREIZH IT</span>
         </a>
+        <ul class="nav-links">
+            <li><a href="#prestations">Prestations</a></li>
+            <li><a href="#actualites">Actualités IT</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
     <!-- Section Accueil -->
@@ -340,16 +457,16 @@
         <img src="logo.jpg" alt="Logo Fontaine Breizh Informatique" class="hero-logo">
         <h1>La rigueur technique au service de votre <span>infrastructure</span></h1>
         <p>Support IT, optimisation réseau et gestion de l'empreinte numérique. Interventions sur Pleumeleuc et le bassin rennais.</p>
-        <a href="mailto:contact@fontainebreizhinformatique.fr" class="btn">Demander un diagnostic</a>
+        <a href="mailto:contact@fontainebreizhinformatique.fr" class="btn" id="contact">Demander un diagnostic</a>
     </header>
 
     <!-- Section Prestations -->
-    <section class="services-section">
+    <section class="services-section" id="prestations">
         <h2>Mes Domaines d'Expertise</h2>
         <p class="services-intro">Approche 100% Conseil et Service. Aucune vente de matériel, optimisation de l'existant.</p>
-        
+
         <div class="cards-container">
-            
+
             <!-- Carte Professionnels (Mise en avant B2B) -->
             <div class="card">
                 <h3>🏢 Entreprises & Pros</h3>
@@ -384,9 +501,54 @@
                     <li>Sauvegarde et transfert de vos données.</li>
                     <li>Prise en main accompagnée.</li>
                 </ul>
+                <div class="mascot-duo">
+                    <img src="mascotte.jpg" alt="Mascotte Fontaine Breizh Informatique">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Manchot open source">
+                        <ellipse cx="32" cy="36" rx="18" ry="24" fill="#1e293b" stroke="#e2e8f0" stroke-width="2"/>
+                        <ellipse cx="32" cy="40" rx="10" ry="16" fill="#e2e8f0"/>
+                        <circle cx="26" cy="20" r="2.2" fill="#1e293b"/>
+                        <circle cx="38" cy="20" r="2.2" fill="#1e293b"/>
+                        <polygon points="30,25 34,25 32,29" fill="#f59e0b"/>
+                        <ellipse cx="32" cy="58" rx="7" ry="2.5" fill="#f59e0b"/>
+                    </svg>
+                    <span>La belette et son collègue manchot vous accompagnent vers l'open source.</span>
+                </div>
             </div>
 
         </div>
+    </section>
+
+    <!-- Section Actualités IT -->
+    <section class="news-section" id="actualites">
+        <h2>Actualités Informatiques</h2>
+        <p class="news-intro">Ce qui bouge dans le monde de l'IT et qui peut concerner votre parc informatique.</p>
+
+        <div class="cards-container">
+            <!-- NEWS:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
+            <div class="news-card">
+                <span class="news-date">13 octobre 2026</span>
+                <h3>Fin du support gratuit de Windows 10 en Europe</h3>
+                <p>L'extension gratuite du support de sécurité de Windows 10 accordée aux particuliers européens s'arrête à cette date. Les PC encore sous Windows 10 devront basculer vers Windows 11, souscrire à une extension payante, ou envisager une seconde vie sous Linux : c'est justement le créneau de notre accompagnement "Sauvetage & Open Source" ci-dessus.</p>
+                <a href="https://www.it-connect.fr/fin-du-support-de-windows-10-tout-le-monde-pourra-beneficier-du-programme-esu-mais-il-faudra-payer/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card">
+                <span class="news-date">Septembre 2026</span>
+                <h3>Un Patch Tuesday record chez Microsoft</h3>
+                <p>Le lot mensuel de correctifs de sécurité de Microsoft a battu un nouveau record avec près de 1000 vulnérabilités corrigées d'un coup, dont deux failles déjà exploitées touchant Windows, Office et Exchange. Un rappel utile : garder ses mises à jour à jour reste la première ligne de défense, aussi bien pour les particuliers que pour les pros.</p>
+                <a href="https://www.it-connect.fr/patch-tuesday-septembre-2026-recapitulatif/" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+
+            <div class="news-card">
+                <span class="news-date">14 septembre 2026</span>
+                <h3>Alerte sécurité sur des équipements réseau Cisco</h3>
+                <p>Une vulnérabilité activement exploitée a été signalée sur plusieurs produits de messagerie sécurisée Cisco, et ajoutée au catalogue officiel des failles exploitées connues. Un exemple concret de l'intérêt d'un audit réseau régulier pour repérer les équipements à mettre à jour en priorité.</p>
+                <a href="https://www.cyber.gc.ca/fr/alertes-avis/bulletin-securite-cisco-av26-921" target="_blank" rel="noopener">Lire l'article source →</a>
+            </div>
+            <!-- NEWS:END -->
+        </div>
+
+        <p class="news-footnote">Actualités mises à jour automatiquement chaque jour — dernière actualisation : <span id="news-updated">18/09/2026</span>.</p>
     </section>
 
     <!-- Pied de page -->
@@ -395,7 +557,7 @@
             <a href="https://www.facebook.com/profile.php?id=61594181472791" target="_blank">Facebook</a>
             <a href="https://www.instagram.com/fontaine.breizh.it/" target="_blank">Instagram</a>
         </div>
-        
+
         <div class="mentions-legales">
             <p><strong>Mentions Légales :</strong> Site édité par Fontaine Breizh Informatique, Entreprise Individuelle représentée par Jean-Baptiste FONTAINE.<br>
             SIREN : 109963892. Siège social : 35137 Pleumeleuc, France.<br>
