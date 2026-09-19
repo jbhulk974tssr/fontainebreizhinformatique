@@ -157,6 +157,45 @@
         .mascot-duo svg { width: 38px; height: 46px; flex-shrink: 0; }
         .mascot-duo span { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
 
+        /* Bloc Zone d'Intervention (Google Maps) */
+        .map-container { 
+            text-align: center; 
+            margin: 4rem auto 0 auto; 
+            max-width: 800px; 
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .map-container h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .map-iframe-wrapper {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .map-iframe-wrapper iframe {
+            display: block;
+            /* Filtre "Dark Mode" pour la carte Google Maps */
+            filter: grayscale(20%) invert(90%) hue-rotate(180deg) contrast(1.1);
+            transition: filter 0.3s ease;
+        }
+        .map-iframe-wrapper iframe:hover {
+            filter: grayscale(0%) invert(0%) hue-rotate(0deg) contrast(1);
+        }
+        .map-container p { 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            margin-top: 1rem; 
+        }
+
         .news-subheading { font-size: 1.3rem; color: var(--white); text-align: left; max-width: 1200px; margin: 3rem auto 1.5rem auto; padding-left: 4px; }
         .news-section .cards-container:first-of-type { margin-top: 0; }
         .news-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; text-align: left; position: relative; }
@@ -347,16 +386,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- BLOC ZONE D'INTERVENTION (MAP) -->
+        <div class="map-container">
+            <h3><i class="fas fa-map-marker-alt" style="color: var(--vert-celte);"></i> Zone d'Intervention</h3>
+            <div class="map-iframe-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42579.82424424368!2d-1.948259!3d48.185292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480ed5d33d9aa89d%3A0x40ca5cd36e56840!2s35137%20Pleumeleuc!5e0!3m2!1sfr!2sfr!4v1726727000000" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <p>Interventions rapides sur <strong>Pleumeleuc</strong>, Montfort-sur-Meu, Bédée, Pacé et le bassin rennais.</p>
+        </div>
+        <!-- FIN BLOC MAP -->
+
     </section>
 
-    <!-- Section Actualités IT (RESTAURÉE AVEC SES BALISES) -->
+    <!-- Section Actualités IT -->
     <section class="news-section" id="actualites">
         <h2>Actualités Informatiques</h2>
         <p class="news-intro">Ce qui bouge dans le monde de l'IT, du mobile et du jeu vidéo.</p>
 
         <h3 class="news-subheading">Informatique & Sécurité</h3>
         <div class="cards-container">
-            <!-- NEWS:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
+            <!-- NEWS:START -->
             <div class="news-card">
                 <span class="news-date">13 octobre 2026</span>
                 <h3>Fin du support gratuit de Windows 10 en Europe</h3>
@@ -382,7 +440,7 @@
 
         <h3 class="news-subheading">Mobile — Android & iOS</h3>
         <div class="cards-container">
-            <!-- MOBILE:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
+            <!-- MOBILE:START -->
             <div class="news-card mobile">
                 <span class="news-date">17 septembre 2026</span>
                 <h3>Un bug d'iOS 27 bloque certains iPhone</h3>
@@ -408,7 +466,7 @@
 
         <h3 class="news-subheading">Jeux vidéo</h3>
         <div class="cards-container">
-            <!-- GAMING:START (généré automatiquement par update_news.py, ne pas éditer à la main) -->
+            <!-- GAMING:START -->
             <div class="news-card gaming">
                 <span class="news-date">16 septembre 2026</span>
                 <h3>GTA 6 dope déjà les ventes de consoles</h3>
@@ -432,7 +490,7 @@
             <!-- GAMING:END -->
         </div>
 
-        <p class="news-footnote">Actualités mises à jour automatiquement chaque jour — dernière actualisation : <span id="news-updated">18/09/2026</span>.</p>
+        <p class="news-footnote">Actualités mises à jour automatiquement chaque jour — dernière actualisation : <span id="news-updated">19/09/2026</span>.</p>
     </section>
 
     <!-- Pied de page -->
