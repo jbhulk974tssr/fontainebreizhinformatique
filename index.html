@@ -496,13 +496,13 @@
 
         // --- 2. MOTEUR RSS DYNAMIQUE AVEC CACHE ET FALLBACK ---
         async function chargerFluxRSS() {
-            const CACHE_KEY = 'fontaine_it_news_cache';
+            const CACHE_KEY = 'fontaine_it_news_cache_v2'; 
             const CACHE_LIFETIME = 4 * 60 * 60 * 1000; // 4 heures
 
             const fluxRSS = [
                 { id: 'feed-it', url: 'https://www.it-connect.fr/feed/', theme: 'tech' },
                 { id: 'feed-linux', url: 'https://linuxfr.org/news.atom', theme: 'linux' },
-                { id: 'feed-mobile', url: 'https://www.igen.fr/rss.xml', theme: 'mobile' }
+                { id: 'feed-mobile', url: 'https://www.frandroid.com/feed', theme: 'mobile' } 
             ];
 
             // 1. Vérification du cache
@@ -599,7 +599,7 @@
             } else {
                 fluxRSS.forEach(f => {
                     const cont = document.getElementById(f.id);
-                    if(cont) cont.innerHTML = `<p style="color: var(--accent-amber); font-weight: 500;"><i class="fas fa-exclamation-triangle"></i> Blocage réseau détecté (Adblocker ou mode hors-ligne).</p>`;
+                    if(cont) cont.innerHTML = `<p style="color: var(--accent-amber); font-weight: 500;"><i class="fas fa-exclamation-triangle"></i> Blocage réseau détecté ou site source indisponible.</p>`;
                 });
                 document.getElementById("news-updated-time").innerText = "Échec de la synchronisation";
             }
