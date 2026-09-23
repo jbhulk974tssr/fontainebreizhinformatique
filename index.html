@@ -494,10 +494,10 @@
             }
         });
 
-        // --- 2. MOTEUR RSS DYNAMIQUE AVEC CACHE LOCALSTORAGE ---
+        // --- 2. MOTEUR RSS DYNAMIQUE AVEC CACHE ET FALLBACK ---
         async function chargerFluxRSS() {
             const CACHE_KEY = 'fontaine_it_news_cache';
-            const CACHE_LIFETIME = 4 * 60 * 60 * 1000; // Cache valide pendant 4 heures
+            const CACHE_LIFETIME = 4 * 60 * 60 * 1000; // 4 heures
 
             const fluxRSS = [
                 { id: 'feed-it', url: 'https://www.it-connect.fr/feed/', theme: 'tech' },
@@ -505,29 +505,25 @@
                 { id: 'feed-mobile', url: 'https://www.igen.fr/rss.xml', theme: 'mobile' }
             ];
 
-            // 1. Vérification du cache local
+            // 1. Vérification du cache
             const cachedData = localStorage.getItem(CACHE_KEY);
             if (cachedData) {
                 const parsedCache = JSON.parse(cachedData);
-                const age = Date.now() - parsedCache.timestamp;
-                
-                if (age < CACHE_LIFETIME) {
-                    // Le cache est valide, on l'utilise
-                    console.log("Chargement des actus depuis le cache local...");
+                if (Date.now() - parsedCache.timestamp < CACHE_LIFETIME) {
                     renderArticles(parsedCache.articles);
                     updateTimestamp(new Date(parsedCache.timestamp));
                     return;
                 }
             }
 
-            // 2. Si pas de cache ou cache expiré, on va chercher les données via API
-            console.log("Cache expiré ou inexistant, requête API en cours...");
             let fetchedArticles = { 'feed-it': [], 'feed-linux': [], 'feed-mobile': [] };
             let fetchSuccess = true;
 
             for (const flux of fluxRSS) {
                 try {
+                    // Tentative 1 : API RSS2JSON 
                     const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(flux.url)}`);
+                    if (!response.ok) throw new Error("Erreur HTTP rss2json");
                     const data = await response.json();
                     
                     if (data.status === 'ok') {
@@ -539,16 +535,56 @@
                             theme: flux.theme
                         }));
                     } else {
-                        fetchSuccess = false;
+                        throw new Error("API rss2json a renvoyé un statut d'erreur");
                     }
                 } catch (error) {
-                    console.error(`Erreur sur le flux ${flux.url}:`, error);
-                    fetchSuccess = false;
+                    console.warn(`[Fallback] Échec rss2json pour ${flux.id}. Basculement sur le Proxy CORS...`);
+                    
+                    try {
+                        // Tentative 2 : Proxy CORS public + Parsing XML natif
+                        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(flux.url)}`;
+                        const res = await fetch(proxyUrl);
+                        const proxyData = await res.json();
+                        
+                        if (!proxyData.contents) throw new Error("Contenu proxy vide");
+                        
+                        // Parser le XML reçu (gère le RSS classique et l'Atom de LinuxFr)
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(proxyData.contents, "text/xml");
+                        const items = xmlDoc.querySelectorAll("item, entry");
+                        let parsedItems = [];
+                        
+                        for(let i = 0; i < Math.min(3, items.length); i++) {
+                            const el = items[i];
+                            const title = el.querySelector("title")?.textContent || "Article sans titre";
+                            // L'URL est stockée différemment en RSS (<link>) et en Atom (<link href="...">)
+                            const link = el.querySelector("link")?.textContent || el.querySelector("link")?.getAttribute("href") || "#";
+                            const pubDate = el.querySelector("pubDate, published, updated")?.textContent || new Date().toISOString();
+                            const descRaw = el.querySelector("description, summary, content")?.textContent || "";
+                            
+                            parsedItems.push({
+                                title: title,
+                                link: link,
+                                pubDate: pubDate,
+                                description: descRaw.replace(/<[^>]*>?/gm, '').substring(0, 140) + '...',
+                                theme: flux.theme
+                            });
+                        }
+                        
+                        if (parsedItems.length > 0) {
+                            fetchedArticles[flux.id] = parsedItems;
+                        } else {
+                            throw new Error("Impossible de parser le XML");
+                        }
+                    } catch (fallbackError) {
+                        console.error(`Échec total pour le flux ${flux.id}:`, fallbackError);
+                        fetchSuccess = false;
+                    }
                 }
             }
 
-            // 3. Rendu et Sauvegarde dans le cache (si la requête a fonctionné)
-            if (fetchSuccess) {
+            // 3. Affichage et Sauvegarde
+            if (fetchSuccess || Object.values(fetchedArticles).some(arr => arr.length > 0)) {
                 renderArticles(fetchedArticles);
                 const now = new Date();
                 updateTimestamp(now);
@@ -557,15 +593,15 @@
                     articles: fetchedArticles
                 }));
             } else if (cachedData) {
-                // En cas d'échec réseau, on rabat sur le cache expiré par sécurité
+                console.warn("Échec réseau complet, utilisation du cache expiré.");
                 renderArticles(JSON.parse(cachedData).articles);
                 updateTimestamp(new Date(JSON.parse(cachedData).timestamp));
             } else {
-                // Échec total (pas de réseau et pas de cache)
                 fluxRSS.forEach(f => {
                     const cont = document.getElementById(f.id);
-                    if(cont) cont.innerHTML = `<p style="color: var(--text-muted);">Données inaccessibles hors-ligne.</p>`;
+                    if(cont) cont.innerHTML = `<p style="color: var(--accent-amber); font-weight: 500;"><i class="fas fa-exclamation-triangle"></i> Blocage réseau détecté (Adblocker ou mode hors-ligne).</p>`;
                 });
+                document.getElementById("news-updated-time").innerText = "Échec de la synchronisation";
             }
         }
 
