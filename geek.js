@@ -1,7 +1,4 @@
-/**
- * geek.js - Logique fonctionnelle de Fontaine Breizh Informatique
- * Architecture sécurisée, gestion asynchrone et Easter Eggs.
- */
+// geek.js - Logique et dynamisme
 
 document.addEventListener("DOMContentLoaded", () => {
     initBootSequence();
@@ -10,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchRSSFeeds();
     initEasterEgg();
     
-    // Navbar scroll effect
+    // Effet sur la barre de navigation au scroll
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('navbar');
         if (window.scrollY > 50) nav.classList.add('scrolled');
@@ -28,10 +25,10 @@ function initBootSequence() {
         return;
     }
     
-    let delay = 300;
+    let delay = 200;
     lines.forEach((line) => {
         setTimeout(() => { line.style.opacity = 1; }, delay);
-        delay += Math.random() * 300 + 150;
+        delay += Math.random() * 300 + 100;
     });
     
     setTimeout(() => {
@@ -39,8 +36,8 @@ function initBootSequence() {
         setTimeout(() => {
             bootScreen.style.display = 'none';
             sessionStorage.setItem('bootSeen', 'true');
-        }, 600);
-    }, delay + 500);
+        }, 500);
+    }, delay + 400);
 }
 
 /* --- 2. TYPING EFFECT (HERO) --- */
@@ -65,17 +62,17 @@ function initTypingEffect() {
         let typeSpeed = isDeleting ? 50 : 100;
 
         if (!isDeleting && charIndex === currentWord.length) {
-            typeSpeed = 2000; // Pause à la fin du mot
+            typeSpeed = 2000;
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             wordIndex = (wordIndex + 1) % words.length;
-            typeSpeed = 500; // Pause avant le prochain mot
+            typeSpeed = 500;
         }
 
         setTimeout(type, typeSpeed);
     }
-    setTimeout(type, 1500); // Délai initial
+    setTimeout(type, 1000);
 }
 
 /* --- 3. QUIZ INTERACTIF --- */
@@ -107,31 +104,17 @@ function initQuotes() {
     document.getElementById("daily-quote-text").textContent = `« ${citations[index]} »`;
 }
 
-/* --- 5. LECTEUR RSS SÉCURISÉ (ANTI-XSS) --- */
+/* --- 5. LECTEUR RSS SECURISE --- */
 async function fetchRSSFeeds() {
-    const CACHE_KEY = 'fontaine_it_news_cache_v4';
-    const CACHE_LIFETIME = 4 * 60 * 60 * 1000; // 4 heures
-    
     const feeds = [
         { id: 'feed-it', url: 'https://www.it-connect.fr/feed/' },
         { id: 'feed-linux', url: 'https://linuxfr.org/news.atom' }
     ];
 
-    const cachedData = localStorage.getItem(CACHE_KEY);
-    if (cachedData) {
-        const parsedCache = JSON.parse(cachedData);
-        if (Date.now() - parsedCache.timestamp < CACHE_LIFETIME) {
-            renderRSS(parsedCache.articles);
-            updateTime(new Date(parsedCache.timestamp));
-            return;
-        }
-    }
-
     let fetchedArticles = { 'feed-it': [], 'feed-linux': [] };
     
     for (const feed of feeds) {
         try {
-            // Utilisation d'un proxy public pour contourner CORS
             const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(feed.url)}`;
             const response = await fetch(proxyUrl);
             const data = await response.json();
@@ -141,30 +124,26 @@ async function fetchRSSFeeds() {
             const items = xml.querySelectorAll("item, entry");
             
             for(let i = 0; i < Math.min(3, items.length); i++) {
-                const title = items[i].querySelector("title")?.textContent || "Article";
+                const title = items[i].querySelector("title")?.textContent || "Nouvel Article";
                 const link = items[i].querySelector("link")?.textContent || items[i].querySelector("link")?.getAttribute("href") || "#";
-                
                 fetchedArticles[feed.id].push({ title, link });
             }
         } catch (error) {
-            console.error(`Erreur RSS pour ${feed.id}:`, error);
+            console.error(`Erreur RSS pour ${feed.id}`);
         }
     }
 
     renderRSS(fetchedArticles);
-    const now = new Date();
-    updateTime(now);
-    localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: now.getTime(), articles: fetchedArticles }));
 }
 
 function renderRSS(articlesMap) {
     for (const [containerId, articles] of Object.entries(articlesMap)) {
         const container = document.getElementById(containerId);
         if (!container) continue;
-        container.innerHTML = ''; // Clear loader
+        container.innerHTML = ''; 
         
         if (articles.length === 0) {
-            container.innerHTML = '<p class="text-muted">Flux indisponible actuellement.</p>';
+            container.innerHTML = '<p class="text-muted" style="font-size:0.9rem;">Flux momentanément indisponible.</p>';
             continue;
         }
 
@@ -188,11 +167,7 @@ function renderRSS(articlesMap) {
     }
 }
 
-function updateTime(dateObj) {
-    document.getElementById("news-updated-time").textContent = dateObj.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-}
-
-/* --- 6. EASTER EGG MANDALORIAN --- */
+/* --- 6. EASTER EGG (MANDALORIAN) --- */
 function initEasterEgg() {
     let typedKeys = "";
     document.addEventListener("keydown", (e) => {
@@ -201,18 +176,12 @@ function initEasterEgg() {
         
         if (typedKeys.includes("mando") || typedKeys.includes("jedi")) {
             const isMando = document.body.classList.toggle('theme-mando');
-            const alertMsg = isMando ? "Telle est la voie. (Thème Beskar activé 🛡️)" : "Retour au système standard.";
+            console.log(`%c ${isMando ? "Telle est la voie. 🛡️" : "Retour au thème standard."}`, 'background: #222; color: #bada55; font-size: 16px; padding: 10px;');
             
-            // Création d'une notification console propre plutôt qu'un vieux "alert()"
-            console.log(`%c ${alertMsg}`, 'background: #222; color: #bada55; font-size: 16px; padding: 10px;');
-            
-            // Remplacement de l'icône de badge
             const badgeIcon = document.querySelector('.certification-badge i');
-            if(badgeIcon) {
-                badgeIcon.className = isMando ? 'fas fa-jedi' : 'fas fa-award';
-            }
+            if(badgeIcon) badgeIcon.className = isMando ? 'fas fa-jedi' : 'fas fa-award';
             
-            typedKeys = ""; // Reset
+            typedKeys = "";
         }
     });
 }
