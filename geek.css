@@ -1,0 +1,55 @@
+/* geek.css — ajouts pour Fontaine Breizh Informatique (utilise les variables du site) */
+.hero{position:relative;overflow:hidden}
+.hero>*:not(#mx){position:relative;z-index:1}
+#mx{position:absolute;inset:0;width:100%;height:100%;opacity:.25;pointer-events:none;z-index:0!important}
+.mx-toggle{position:absolute!important;top:12px;right:12px;background:rgba(0,0,0,.4);color:var(--text-muted);border:1px solid var(--border-color);border-radius:6px;padding:4px 10px;font:500 .75rem 'Fira Code',monospace;cursor:pointer}
+.mx-toggle:hover,.mx-toggle:focus-visible{color:var(--vert-celte);border-color:var(--vert-celte)}
+.avail{display:inline-flex;align-items:center;gap:8px;margin-bottom:1.5rem;padding:6px 14px;border:1px solid var(--border-color);border-radius:50px;font:500 .85rem 'Fira Code',monospace;color:var(--text-muted);background:rgba(0,0,0,.25)}
+.hero h1 span::after{content:'▌';margin-left:2px;animation:blink 1s steps(2) infinite}
+.stat-line{margin:1.5rem auto 0;font:500 .95rem 'Fira Code',monospace;color:var(--text-muted)}
+.stat-line b{color:var(--vert-celte);font-size:1.4rem}
+
+/* Labo */
+.lab{padding:5rem 5%;text-align:center;border-top:1px solid var(--border-color)}
+.lab h2,.reviews-section h2{font-size:2.2rem;color:var(--white);margin-bottom:.5rem}
+.lab-intro{color:var(--text-muted);margin-bottom:3rem}
+.lab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.lab-box{background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.5rem;text-align:left;border-top:4px solid var(--vert-celte)}
+.lab-box h3{color:var(--white);font-size:1.15rem;margin-bottom:.4rem}
+.lab-box small{display:block;color:var(--text-muted);margin-bottom:1rem}
+.term{background:#000;color:#9dffb0;font:.82rem/1.5 'Fira Code',monospace;border-radius:6px;padding:12px;height:260px;overflow:auto;cursor:text}
+.term pre{white-space:pre-wrap;word-break:break-word;font:inherit}
+.term-row{display:flex;gap:6px}.term-row input{flex:1;background:transparent;border:0;outline:0;color:inherit;font:inherit}
+.lab-btn{background:transparent;border:1px solid var(--vert-celte);color:var(--vert-celte);padding:8px 16px;border-radius:6px;font-weight:700;cursor:pointer}
+.lab-btn:hover{background:var(--vert-celte);color:#fff}
+.scan-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.88rem}
+.scan-table td{padding:5px 0;border-bottom:1px dashed var(--border-color)}.scan-table td:first-child{color:var(--text-muted)}
+.verdict{margin-top:1rem;color:var(--white);font-size:.92rem}
+.lab-box input[type=text],.lab-box input[type=password]{width:100%;padding:10px;border-radius:6px;border:1px solid var(--border-color);background:#0f172a;color:var(--text-light);font:inherit}
+.bar{height:8px;border-radius:4px;background:#0f172a;margin:.8rem 0 .4rem;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:#dc2626;transition:width .3s,background .3s}
+
+/* Avis */
+.reviews-section{padding:5rem 5%;text-align:center;background:#172033;border-top:1px solid var(--border-color)}
+.reviews-score{display:inline-flex;gap:10px;align-items:center;color:var(--text-muted);margin-bottom:3rem}
+.stars{color:#fbbc04;letter-spacing:2px}
+.review-card{background:var(--bg-card);border:1px solid var(--border-color);border-top:4px solid #fbbc04;border-radius:8px;padding:2rem;text-align:left}
+.review-card p{color:var(--text-muted);font-style:italic;margin:.8rem 0 1.2rem;font-size:.95rem}
+.review-author{color:var(--white);font-weight:700;font-size:.9rem}
+.review-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:3rem}
+.review-empty{color:var(--text-muted);max-width:520px;margin:0 auto}
+
+/* Palette Ctrl+K */
+#pal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:flex-start;justify-content:center;padding-top:15vh;z-index:10000}
+#pal.open{display:flex}
+.pal-box{width:min(520px,92vw);background:var(--bg-card);border:1px solid var(--vert-celte);border-radius:10px;overflow:hidden;box-shadow:0 0 40px var(--vert-celte-glow)}
+.pal-box input{width:100%;padding:16px;background:transparent;border:0;border-bottom:1px solid var(--border-color);color:var(--white);font:1rem 'Fira Code',monospace;outline:0}
+.pal-box ul{list-style:none;max-height:300px;overflow:auto}
+.pal-box li{padding:12px 16px;cursor:pointer;color:var(--text-light)}
+.pal-box li.sel,.pal-box li:hover{background:rgba(0,155,77,.18);color:var(--white)}
+
+/* Konami / thème hacker */
+body.hacker{--bg-dark:#000;--bg-card:#04140a;--text-light:#9dffb0;--text-muted:#4ade80;--border-color:#14532d;--vert-celte:#00ff41;--vert-celte-glow:rgba(0,255,65,.5);font-family:'Fira Code',monospace}
+.runner{position:fixed;bottom:12px;left:-90px;width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--vert-celte);z-index:9998;animation:run 6s linear forwards}
+@keyframes run{to{transform:translateX(calc(100vw + 180px)) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){.runner{animation-duration:.01s}.hero h1 span::after{animation:none}}
