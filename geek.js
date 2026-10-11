@@ -7,7 +7,6 @@ const FICHE_URL = 'https://share.google/q0WLynfvsGCFjCLWZ';
 // Colle ici tes vrais avis Google : {nom:'Prénom N.', date:'septembre 2026', note:5, texte:'...'}
 const AVIS = [];
 const PC_SAUVES = 0; // mets ton vrai chiffre, masqué si 0
-const HORAIRES = {1:[9,19],2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[9,12]}; // 0 = dimanche
 /* =========================== */
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -64,14 +63,6 @@ if (hero) {
   b.onclick = () => { mxOn = !mxOn; b.textContent = 'matrix: ' + (mxOn ? 'on' : 'off'); };
   hero.append(b);
   window.toggleMatrix = () => b.click();
-
-  /* Badge disponibilité */
-  const p = new Date(new Date().toLocaleString('en-US', {timeZone: 'Europe/Paris'}));
-  const h = HORAIRES[p.getDay()], t = p.getHours() + p.getMinutes() / 60;
-  const open = h && t >= h[0] && t < h[1];
-  const badge = document.createElement('div'); badge.className = 'avail';
-  badge.textContent = open ? '🟢 En ligne · réponse rapide sur WhatsApp' : '🔴 Hors ligne · je réponds dès la reprise';
-  hero.querySelector('h1').before(badge);
 
   /* Machine à écrire */
   const sp = $('h1 span', hero);

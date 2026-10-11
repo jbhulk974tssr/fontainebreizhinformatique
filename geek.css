@@ -4,7 +4,6 @@
 #mx{position:absolute;inset:0;width:100%;height:100%;opacity:.25;pointer-events:none;z-index:0!important}
 .mx-toggle{position:absolute!important;top:12px;right:12px;background:rgba(0,0,0,.4);color:var(--text-muted);border:1px solid var(--border-color);border-radius:6px;padding:4px 10px;font:500 .75rem 'Fira Code',monospace;cursor:pointer}
 .mx-toggle:hover,.mx-toggle:focus-visible{color:var(--vert-celte);border-color:var(--vert-celte)}
-.avail{display:inline-flex;align-items:center;gap:8px;margin-bottom:1.5rem;padding:6px 14px;border:1px solid var(--border-color);border-radius:50px;font:500 .85rem 'Fira Code',monospace;color:var(--text-muted);background:rgba(0,0,0,.25)}
 .hero h1 span::after{content:'▌';margin-left:2px;animation:blink 1s steps(2) infinite}
 .stat-line{margin:1.5rem auto 0;font:500 .95rem 'Fira Code',monospace;color:var(--text-muted)}
 .stat-line b{color:var(--vert-celte);font-size:1.4rem}
