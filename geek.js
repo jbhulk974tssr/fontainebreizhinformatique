@@ -42,7 +42,7 @@ function initBootSequence() {
 
 /* --- 2. TYPING EFFECT (HERO) --- */
 function initTypingEffect() {
-    const words = ["réussite", "entreprise", "tranquillité", "système"];
+    const words = ["réussite", "entreprise", "tranquilité", "système"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
