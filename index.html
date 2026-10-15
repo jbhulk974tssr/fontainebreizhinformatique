@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Assistance & Conseil Informatique à Pleumeleuc et Rennes | Fontaine Breizh Informatique</title>
 <meta name="description" content="Assistance informatique de proximité à Pleumeleuc, Montfort-sur-Meu, Bédée, Pacé et autour de Rennes. Diagnostic inclus, Linux, Wi-Fi, désinfection virus, community management.">
 <link rel="canonical" href="https://www.fontainebreizhinformatique.fr/">
@@ -38,7 +38,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
-    "reviewCount": "1"
+    "reviewCount": "2"
   },
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61594181472791",
@@ -48,26 +48,30 @@
 }
 </script>
 
-<!-- Feuille de style principale et ajouts Geek -->
 <link rel="stylesheet" href="geek.css">
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav class="nav">
-  <div class="wrap">
+<!-- NAVIGATION RESPONSIVE (PC, TABLETTE, MOBILE) -->
+<nav class="nav" id="navbar">
+  <div class="wrap nav-bar">
     <a class="brand" href="#">
       <img src="logo.jpg" alt="Logo Fontaine Breizh Informatique">
       <span>Fontaine Breizh IT</span>
     </a>
-    <ul class="nav-links">
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#deroulement">Déroulement</a></li>
-      <li><a href="#avis">Avis</a></li>
+      <li><a href="#avis">Avis 5★</a></li>
       <li><a href="#actualites">Actus</a></li>
-      <li><a href="#lab">Labo Geek</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#" id="pal-open" class="kbd-hint" title="Ouvrir la palette de commandes (Ctrl+K)">Ctrl K</a></li>
+      <li><a href="#lab" class="lab-link"><i class="fas fa-flask"></i> Labo Geek</a></li>
+      <li><a href="#" id="pal-open" class="kbd-hint" title="Palette de commandes (Ctrl+K)">Ctrl K</a></li>
       <li><a class="btn" href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -83,23 +87,64 @@
       <p class="lead">PC lent, Wi-Fi capricieux, virus, passage à Linux ou gestion de vos réseaux sociaux : un diagnostic gratuit, des explications claires sans jargon et aucune vente de matériel.</p>
       <div class="cta">
         <a class="btn" href="https://wa.me/33651854152?text=Bonjour%20Jean-Baptiste%2C%20je%20vous%20contacte%20depuis%20votre%20site%20pour%20un%20diagnostic." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a>
-        <a class="btn ghost" href="#contact">Décrire mon besoin</a>
+        <a class="btn ghost" href="#contact"><i class="fas fa-paper-plane"></i> Décrire mon besoin</a>
+      </div>
+
+      <!-- LOGOS RÉSEAUX SOCIAUX DÈS LE HAUT DE PAGE -->
+      <div class="hero-socials">
+        <span>Suivez-moi :</span>
+        <a href="https://www.facebook.com/profile.php?id=61594181472791" target="_blank" rel="noopener noreferrer" class="soc-pill fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="https://www.instagram.com/fontaine.breizh.it/" target="_blank" rel="noopener noreferrer" class="soc-pill ig" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://share.google/q0WLynfvsGCFjCLWZ" target="_blank" rel="noopener noreferrer" class="soc-pill gbp" aria-label="Avis Google"><i class="fab fa-google"></i> 5,0 ★ sur Google</a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- BANDEAU DE CONFIANCE (NON-GEEK) -->
+<!-- BANDEAU DE CONFIANCE -->
 <div class="trust">
   <div class="wrap">
     <ul>
       <li>Diagnostic inclus</li>
-      <li>Accompagnement de proximité (15 km)</li>
+      <li>Déplacement offert (15 km)</li>
       <li>Aucune vente de matériel</li>
       <li>Particuliers et professionnels</li>
     </ul>
   </div>
 </div>
+
+<!-- PÉPITE GEEK DU JOUR + MINI DIAGNOSTIC (EN HAUT DE PAGE) -->
+<section class="top-interactive alt">
+  <div class="wrap interaction-grid">
+    <!-- Mini-Quiz pour Non-Geek -->
+    <div class="interactive-box quiz-box" id="quiz-container">
+      <h3 id="quiz-question">🛠️ Votre outil informatique vous freine ?</h3>
+      <p class="quiz-sub" id="quiz-subtitle">Cliquez sur votre situation pour un premier diagnostic immédiat :</p>
+      <div class="quiz-options" id="quiz-options">
+        <button class="quiz-btn" data-choice="0">💻 Mon PC est trop lent, bloqué ou infecté</button>
+        <button class="quiz-btn" data-choice="1">📢 Mes réseaux sociaux manquent de visibilité</button>
+        <button class="quiz-btn" data-choice="2">🐧 Mon PC Windows 10 vieillit, je veux le sauver</button>
+      </div>
+      <div class="quiz-result" id="quiz-result">
+        <p id="quiz-verdict"></p>
+        <div class="cta" style="justify-content:center">
+          <a id="quiz-wa" href="https://wa.me/33651854152" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> En discuter sur WhatsApp</a>
+          <button class="btn ghost" id="quiz-reset" type="button">Recommencer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pépite Geek du jour + Raccourci vers le Labo Geek en bas -->
+    <div class="interactive-box quote-box">
+      <div class="quote-badge"><i class="fas fa-mug-hot"></i> La pépite geek du jour</div>
+      <p class="quote-text" id="daily-quote-text">« Le DNS est toujours le coupable. Toujours. »</p>
+      <div class="quote-footer">
+        <button type="button" class="link-btn" id="next-quote"><i class="fas fa-sync-alt"></i> Une autre pépite</button>
+        <a href="#lab" class="lab-shortcut"><i class="fas fa-flask"></i> Aller au Labo Geek ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PRESTATIONS -->
 <section id="services">
@@ -109,7 +154,7 @@
     <div class="cards">
       <article class="card">
         <h3>🏠 Particuliers</h3>
-        <p>Prise en charge rapide et pédagogique pour résoudre vos dysfonctionnements logiciels, système et réseau.</p>
+        <p>Intervention rapide et pédagogique pour résoudre vos dysfonctionnements logiciels, système et réseau.</p>
         <ul>
           <li><span>Diagnostic</span> <span class="price">Inclus</span></li>
           <li><span>Optimisation couverture Wi-Fi</span> <span class="price">49 €</span></li>
@@ -146,7 +191,7 @@
   </div>
 </section>
 
-<!-- DÉROULEMENT EN 3 ÉTAPES (RASSURANCE NON-GEEK) -->
+<!-- DÉROULEMENT EN 3 ÉTAPES -->
 <section id="deroulement" class="alt">
   <div class="wrap">
     <h2>Comment ça se passe</h2>
@@ -154,22 +199,46 @@
     <ol class="steps">
       <li>
         <h3>Vous me contactez</h3>
-        <p>Par WhatsApp, formulaire ou e-mail. Vous m'expliquez le souci avec vos mots et nous fixons un créneau.</p>
+        <p>Par WhatsApp, téléphone ou e-mail. Vous m'expliquez le souci avec vos mots et nous fixons un créneau.</p>
       </li>
       <li>
         <h3>Diagnostic transparent</h3>
-        <p>J'analyse votre équipement. Le diagnostic est inclus et vous connaissez le forfait exact avant toute intervention.</p>
+        <p>J'analyse votre équipement. Le diagnostic est inclus et vous validez le forfait avant toute intervention.</p>
       </li>
       <li>
         <h3>Je répare et j'explique</h3>
-        <p>Une fois le problème résolu, je vous donne les bons réflexes pour éviter que cela ne se reproduise.</p>
+        <p>Une fois le problème résolu, je vous montre les bons réflexes pour éviter que cela ne se reproduise.</p>
       </li>
     </ol>
   </div>
 </section>
 
+<!-- AVIS CLIENTS GOOGLE (AVEC LE DERNIER AVIS DE MURIEL SOPHIE & FLORIAN RAMARD) -->
+<section id="avis">
+  <div class="wrap">
+    <h2>Ils m'ont fait confiance</h2>
+    <p class="sub"><span class="stars">★★★★★</span> Note maximale de <strong>5,0 / 5</strong> sur Google.</p>
+    <div id="avis-list" class="cards">
+      <article class="card review">
+        <span class="stars">★★★★★</span>
+        <p>« Intervention à mon domicile très efficace ! Mon ordinateur a retrouvé toutes ses fonctionnalités. Je recommande vivement M.Fontaine, qui est une personne très agréable et professionnels. »</p>
+        <strong><i class="fab fa-google" style="color:#4285F4"></i> Muriel SOPHIE · octobre 2026</strong>
+      </article>
+      <article class="card review">
+        <span class="stars">★★★★★</span>
+        <p>« Super compétent et efficace. Réaction très rapide »</p>
+        <strong><i class="fab fa-google" style="color:#4285F4"></i> Florian Ramard · octobre 2026</strong>
+      </article>
+    </div>
+    <div class="cta" id="avis-cta" style="margin-top:1.8rem">
+      <a class="btn" href="https://search.google.com/local/writereview?placeid=ChIJH4ggSQMorEIRKAMJm79BP30" target="_blank" rel="noopener noreferrer"><i class="fas fa-pen"></i> Laisser un avis Google</a>
+      <a class="btn ghost" href="https://share.google/q0WLynfvsGCFjCLWZ" target="_blank" rel="noopener noreferrer"><i class="fab fa-google"></i> Voir tous les avis</a>
+    </div>
+  </div>
+</section>
+
 <!-- CONSEILS PRATIQUES -->
-<section class="tips" id="conseils">
+<section class="tips alt" id="conseils">
   <div class="wrap">
     <h2>Trois conseils à retenir</h2>
     <p class="sub">Les réflexes essentiels qui évitent la majorité des pannes et des pièges.</p>
@@ -180,23 +249,13 @@
       </article>
       <article class="card">
         <h3>⏳ Fin de support Windows 10</h3>
-        <p>Les mises à jour de sécurité gratuites sont terminées. Si votre PC refuse Windows 11 mais fonctionne bien matériellement, Linux Mint est l'alternative idéale pour continuer en sécurité.</p>
+        <p>Les mises à jour de sécurité gratuites sont terminées. Si votre PC refuse Windows 11 mais fonctionne bien matériellement, Linux Mint est l'alternative idéale.</p>
       </article>
       <article class="card">
         <h3>💾 Sauvegarde 3-2-1</h3>
         <p>Conservez toujours vos photos et documents importants à au moins deux endroits différents (sur votre PC et sur un disque dur externe débranché après copie).</p>
       </article>
     </div>
-  </div>
-</section>
-
-<!-- AVIS CLIENTS -->
-<section id="avis" class="alt">
-  <div class="wrap">
-    <h2>Ils m'ont fait confiance</h2>
-    <p class="sub"><span class="stars">★★★★★</span> Note de 5,0 / 5 sur Google.</p>
-    <div id="avis-list" class="cards"></div>
-    <div class="cta" id="avis-cta" style="margin-top:1.8rem"></div>
   </div>
 </section>
 
@@ -246,11 +305,90 @@
   </div>
 </section>
 
-<!-- LE LABO GEEK (POUR LES CURIEUX ET TECHNOPHILES) -->
+<!-- ZONE D'INTERVENTION & FAQ -->
+<section id="faq" class="alt">
+  <div class="wrap">
+    <h2>Questions fréquentes & Secteur</h2>
+    <p class="sub">Interventions rapides sur Pleumeleuc et tout le bassin rennais.</p>
+    <div class="zone">
+      <span>📍 Pleumeleuc</span>
+      <span>Montfort-sur-Meu</span>
+      <span>Bédée</span>
+      <span>Pacé</span>
+      <span>Saint-Gilles</span>
+      <span>Bassin rennais</span>
+    </div>
+    <details>
+      <summary>Combien coûte une intervention ?</summary>
+      <p>Le diagnostic est inclus. Les forfaits sont fixes : 49 € pour l'optimisation Wi-Fi, 65 € pour la désinfection (virus/adwares) et 79 € pour la réinstallation complète du système. Déplacement offert dans un rayon de 15 km autour de Pleumeleuc. Pour les professionnels, sur devis.</p>
+    </details>
+    <details>
+      <summary>Vendez-vous des ordinateurs ou des pièces ?</summary>
+      <p>Non, je ne vends aucun matériel. Mon conseil est 100 % indépendant : je cherche d'abord à réparer et optimiser ce que vous possédez déjà.</p>
+    </details>
+    <details>
+      <summary>Mon vieux PC sous Windows 10 est-il bon à jeter ?</summary>
+      <p>Pas du tout ! Un système libre comme Linux Mint ou Zorin OS redonne toute sa vitesse à une machine ancienne, avec une prise en main très proche de Windows et une sécurité renforcée.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CONTACT & RÉSEAUX SOCIAUX -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Décrire mon besoin</h2>
+      <p class="sub">Deux minutes suffisent : le message s'ouvre prêt à partir sur WhatsApp.</p>
+      <form id="f">
+        <label>Votre prénom
+          <input id="n" autocomplete="given-name" placeholder="Ex : Muriel" required>
+        </label>
+        <label>Votre besoin
+          <select id="b">
+            <option>PC lent ou qui plante</option>
+            <option>Publicités / Virus / Pirate de navigateur</option>
+            <option>Wi-Fi ou problème réseau</option>
+            <option>Passage à Linux (seconde vie PC)</option>
+            <option>Conseil IT Pro / Community Management</option>
+            <option>Autre demande</option>
+          </select>
+        </label>
+        <label>Quelques précisions (facultatif)
+          <textarea id="m" placeholder="Expliquez brièvement votre souci..."></textarea>
+        </label>
+        <button class="btn" type="submit"><i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp</button>
+      </form>
+    </div>
+
+    <div class="contact-card">
+      <h2>Contact direct & Réseaux</h2>
+      <p class="sub">Retrouvez toutes mes coordonnées et suivez mes astuces sur Facebook et Instagram :</p>
+      <ul class="contact-list">
+        <li><i class="fas fa-phone-alt"></i> <a href="tel:+33651854152">06 51 85 41 52</a></li>
+        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/33651854152" target="_blank" rel="noopener noreferrer">Discuter sur WhatsApp</a></li>
+        <li><i class="fas fa-envelope"></i> <a href="mailto:contact@fontainebreizhinformatique.fr">contact@fontainebreizhinformatique.fr</a></li>
+        <li><i class="fas fa-map-marker-alt"></i> 35137 Pleumeleuc — Bassin rennais</li>
+      </ul>
+
+      <div class="social-cards">
+        <a href="https://www.facebook.com/profile.php?id=61594181472791" target="_blank" rel="noopener noreferrer" class="social-big fb">
+          <i class="fab fa-facebook-f"></i>
+          <div><strong>Facebook</strong><small>Suivre la page & les actus</small></div>
+        </a>
+        <a href="https://www.instagram.com/fontaine.breizh.it/" target="_blank" rel="noopener noreferrer" class="social-big ig">
+          <i class="fab fa-instagram"></i>
+          <div><strong>Instagram</strong><small>@fontaine.breizh.it</small></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LE LABO GEEK (PLACÉ EN BAS DE PAGE COMME DEMANDÉ) -->
 <section id="lab" class="lab alt">
   <div class="wrap">
     <h2>🧪 Le Labo Geek</h2>
-    <p class="sub">Un espace interactif pour les curieux : testez votre machine, la solidité d'un mot de passe ou tapez une commande dans le terminal (100 % local dans votre navigateur).</p>
+    <p class="sub">Un espace en bas de page réservé aux curieux et technophiles : tout tourne en local dans votre navigateur, aucune donnée n'est envoyée.</p>
     <div class="lab-grid">
       <div class="lab-box">
         <h3><i class="fas fa-terminal"></i> Terminal BZH-SH</h3>
@@ -263,111 +401,40 @@
 
       <div class="lab-box">
         <h3><i class="fas fa-microchip"></i> Ma machine vue par un tech</h3>
-        <small>Diagnostic instantané de votre navigateur</small>
-        <button class="lab-btn" id="scan-go"><i class="fas fa-search"></i> Lancer l'analyse locale</button>
+        <small>Diagnostic instantané de votre appareil</small>
+        <button class="lab-btn" id="scan-go"><i class="fas fa-search"></i> Lancer le scan local</button>
         <div id="scan-out"></div>
       </div>
 
       <div class="lab-box">
         <h3><i class="fas fa-key"></i> Testeur de mot de passe</h3>
-        <small>Calcul local d'entropie (aucune donnée envoyée)</small>
-        <input type="password" id="pwd" placeholder="Testez un mot de passe..." autocomplete="off" aria-label="Mot de passe à tester">
+        <small>Vérifiez la résistance d'un mot de passe</small>
+        <input type="password" id="pwd" placeholder="Saisissez un mot de passe..." autocomplete="off" aria-label="Mot de passe à tester">
         <div class="bar"><i id="pbar"></i></div>
-        <div id="ptxt" class="verdict">Saisissez un exemple pour calculer sa résistance…</div>
+        <div id="ptxt" class="verdict">En attente de saisie…</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ZONE D'INTERVENTION & FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <h2>Questions fréquentes & Secteur</h2>
-    <p class="sub">Les réponses claires avant de me solliciter.</p>
-    <div class="zone">
-      <span>📍 Pleumeleuc</span>
-      <span>Montfort-sur-Meu</span>
-      <span>Bédée</span>
-      <span>Pacé</span>
-      <span>Saint-Gilles</span>
-      <span>Bassin rennais</span>
-    </div>
-    <details>
-      <summary>Combien coûte une intervention ?</summary>
-      <p>Le diagnostic est inclus. Les forfaits sont fixes : 49 € pour l'optimisation Wi-Fi, 65 € pour la désinfection (virus/adwares) et 79 € pour la réinstallation complète du système. Pour les professionnels, les prestations se font sur devis adapté.</p>
-    </details>
-    <details>
-      <summary>Vendez-vous des ordinateurs ou des pièces ?</summary>
-      <p>Non, je ne vends aucun matériel. Mon conseil est 100 % neutre : mon objectif est de réparer et d'optimiser votre équipement actuel.</p>
-    </details>
-    <details>
-      <summary>Mon vieux PC sous Windows 10 est-il bon à jeter ?</summary>
-      <p>Surtout pas ! Installer un système libre comme Linux Mint ou Zorin OS permet de redonner toute sa rapidité à un ordinateur de plus de 8 ans, avec une interface très proche de Windows et sans virus.</p>
-    </details>
-  </div>
-</section>
-
-<!-- CONTACT SIMPLE -->
-<section id="contact" class="alt">
-  <div class="wrap contact-grid">
-    <div>
-      <h2>Décrire mon besoin</h2>
-      <p class="sub">Remplissez ces 3 champs : votre message s'ouvre prêt à être envoyé sur WhatsApp.</p>
-      <form id="f">
-        <label>Votre prénom
-          <input id="n" autocomplete="given-name" placeholder="Ex : Marie" required>
-        </label>
-        <label>Votre sujet
-          <select id="b">
-            <option>PC lent ou qui plante</option>
-            <option>Publicités / Virus / Pirate de navigateur</option>
-            <option>Wi-Fi ou problème réseau</option>
-            <option>Passage à Linux (seconde vie PC)</option>
-            <option>Conseil IT Pro / Community Management</option>
-            <option>Autre demande</option>
-          </select>
-        </label>
-        <label>Quelques précisions (facultatif)
-          <textarea id="m" placeholder="Décrivez brièvement ce que vous constatez..."></textarea>
-        </label>
-        <button class="btn" type="submit"><i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp</button>
-      </form>
-    </div>
-
-    <div class="contact-card">
-      <h2>Coordonnées directes</h2>
-      <p class="sub">Vous préférez m'écrire par e-mail ou consulter mes pages locales ?</p>
-      <ul class="contact-list">
-        <li><i class="fas fa-envelope"></i> <a href="mailto:contact@fontainebreizhinformatique.fr">contact@fontainebreizhinformatique.fr</a></li>
-        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/33651854152" target="_blank" rel="noopener noreferrer">06 51 85 41 52 (WhatsApp & Téléphone)</a></li>
-        <li><i class="fas fa-map-marker-alt"></i> 35137 Pleumeleuc — Bassin rennais</li>
-      </ul>
-      <div class="quote-box">
-        <p class="quote-title">💬 La pépite geek du jour</p>
-        <p id="daily-quote-text" class="quote-text">« Le DNS est toujours le coupable. Toujours. »</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- FOOTER AVEC LOGOS OFFICIELS -->
 <footer>
-  <div class="soc">
-    <a href="https://www.facebook.com/profile.php?id=61594181472791" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
-    <a href="https://www.instagram.com/fontaine.breizh.it/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
-    <a href="https://wa.me/33651854152" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    <a href="https://share.google/q0WLynfvsGCFjCLWZ" target="_blank" rel="noopener noreferrer"><i class="fab fa-google"></i> Fiche Google</a>
+  <div class="social-icons-footer">
+    <a href="https://www.facebook.com/profile.php?id=61594181472791" target="_blank" rel="noopener noreferrer" class="fb" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/fontaine.breizh.it/" target="_blank" rel="noopener noreferrer" class="ig" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/33651854152" target="_blank" rel="noopener noreferrer" class="wa" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://share.google/q0WLynfvsGCFjCLWZ" target="_blank" rel="noopener noreferrer" class="gbp" aria-label="Fiche Google" title="Avis Google"><i class="fab fa-google"></i></a>
   </div>
   <p><strong>Mentions légales :</strong> Site édité par Fontaine Breizh Informatique, entreprise individuelle représentée par Jean-Baptiste FONTAINE.<br>
   SIREN : 109963892 · Siège social : 35137 Pleumeleuc, France.<br>
   Hébergement : GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis.<br>
-  Contact : contact@fontainebreizhinformatique.fr</p>
+  Contact : <a href="mailto:contact@fontainebreizhinformatique.fr">contact@fontainebreizhinformatique.fr</a></p>
 </footer>
 
-<!-- BOUTONS FLOTTANTS -->
+<!-- BOUTONS FLOTTANTS ADAPTATIFS -->
 <div class="float">
-  <a class="t" href="mailto:contact@fontainebreizhinformatique.fr"><i class="fas fa-envelope"></i> E-mail</a>
-  <a class="w" href="https://wa.me/33651854152?text=Bonjour%20Jean-Baptiste%2C%20j'ai%20besoin%20de%20vos%20services%20informatiques." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  <a class="t" href="tel:+33651854152"><i class="fas fa-phone-alt"></i> <span>Appeler</span></a>
+  <a class="w" href="https://wa.me/33651854152?text=Bonjour%20Jean-Baptiste%2C%20j'ai%20besoin%20de%20vos%20services%20informatiques." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
 </div>
 
 <script src="geek.js" defer></script>
