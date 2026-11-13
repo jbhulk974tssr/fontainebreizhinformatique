@@ -6,10 +6,8 @@
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const THEMES = {
-    jedi: ['#38bdf8', 'rgba(56,189,248,.6)'],
-    vador: ['#dc2626', 'rgba(220,38,38,.6)'],
-    mando: ['#94a3b8', 'rgba(148,163,184,.55)'],
-    reset: ['#009B4D', 'rgba(0,155,77,.4)']
+    jedi: ['#38bdf8', 'rgba(56,189,248,.6)'], vador: ['#dc2626', 'rgba(220,38,38,.6)'],
+    mando: ['#94a3b8', 'rgba(148,163,184,.55)'], reset: ['#009B4D', 'rgba(0,155,77,.4)']
   };
   const setTheme = (c, g) => { root.style.setProperty('--g', c); root.style.setProperty('--glow', g); };
   const go = id => document.getElementById(id)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
@@ -18,67 +16,9 @@
   /* Menu mobile */
   const tg = $('#nav-toggle'), nl = $('#nav-links');
   if (tg && nl) {
-    const close = () => {
-      nl.classList.remove('open');
-      tg.setAttribute('aria-expanded', 'false');
-      tg.innerHTML = '<i class="fas fa-bars"></i>';
-    };
-    tg.onclick = () => {
-      const o = nl.classList.toggle('open');
-      tg.setAttribute('aria-expanded', String(o));
-      tg.innerHTML = o ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    };
+    const close = () => { nl.classList.remove('open'); tg.setAttribute('aria-expanded', 'false'); tg.textContent = '☰ Menu'; };
+    tg.onclick = () => { const o = nl.classList.toggle('open'); tg.setAttribute('aria-expanded', o); tg.textContent = o ? '✕ Fermer' : '☰ Menu'; };
     $$('a', nl).forEach(a => a.addEventListener('click', close));
-  }
-
-  /* Mini-Quiz Interactif (Haut de page) */
-  const quizChoices = [
-    {
-      verdict: 'Diagnostic inclus : un nettoyage système complet ou une désinfection (65 €) redonnera toute sa réactivité à votre ordinateur. Déplacement offert à domicile dans un rayon de 15 km autour de Pleumeleuc.',
-      waText: 'Bonjour Jean-Baptiste, mon PC est lent ou infecté et je souhaiterais un diagnostic.'
-    },
-    {
-      verdict: 'Accompagnement Pro sur devis : création de visuels, calendrier éditorial et animation de vos pages Facebook et Instagram pour booster votre visibilité locale.',
-      waText: 'Bonjour Jean-Baptiste, je souhaite être accompagné pour la gestion de mes réseaux sociaux / conseil IT.'
-    },
-    {
-      verdict: 'Ne jetez pas votre PC Windows 10 ! L\'installation clé en main de Linux Mint ou Zorin OS (79 €) lui offre une seconde vie rapide, sécurisée et sans licence à payer.',
-      waText: 'Bonjour Jean-Baptiste, j\'aimerais donner une seconde vie à mon PC Windows 10 avec Linux.'
-    }
-  ];
-  const qOpts = $('#quiz-options'), qRes = $('#quiz-result'), qVerd = $('#quiz-verdict'), qWa = $('#quiz-wa'), qReset = $('#quiz-reset');
-  if (qOpts && qRes && qVerd && qWa) {
-    $$('.quiz-btn', qOpts).forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = quizChoices[+btn.dataset.choice] || quizChoices[0];
-        qVerd.textContent = item.verdict;
-        qWa.href = `${WA}?text=${encodeURIComponent(item.waText)}`;
-        qOpts.style.display = 'none';
-        qRes.classList.add('active');
-      });
-    });
-    qReset?.addEventListener('click', () => {
-      qRes.classList.remove('active');
-      qOpts.style.display = 'grid';
-    });
-  }
-
-  /* Pépite Geek du jour */
-  const QUOTES = [
-    '« Le DNS est toujours le coupable. Toujours. »',
-    '« Il y a 10 types de personnes dans le monde : celles qui comprennent le binaire, et les autres. »',
-    '« Une sauvegarde n\'existe vraiment que si on a testé sa restauration. »',
-    '« Sous Linux, un vieux PC retrouve ses 20 ans. C\'est ça la vraie écologie numérique. »',
-    '« Avez-vous essayé d\'éteindre et de rallumer ? (Mais pour de vrai, pas en veille prolongée !) »',
-    '« TSSR un jour, Jedi du réseau toujours : que la bande passante soit avec vous. »'
-  ];
-  let qi = 0;
-  const qTxt = $('#daily-quote-text'), qNext = $('#next-quote');
-  if (qTxt && qNext) {
-    qNext.addEventListener('click', () => {
-      qi = (qi + 1) % QUOTES.length;
-      qTxt.textContent = QUOTES[qi];
-    });
   }
 
   /* Formulaire -> WhatsApp */
@@ -92,18 +32,12 @@
   const tout = $('#tout'), tin = $('#tin'), term = $('#term'), hist = [];
   let hi = 0;
   if (tout && tin && term) {
-    const say = (t, dim) => {
-      const p = document.createElement('pre');
-      p.textContent = t;
-      if (dim) p.style.opacity = .7;
-      tout.append(p);
-      term.scrollTop = 1e6;
-    };
+    const say = (t, dim) => { const p = document.createElement('pre'); p.textContent = t; if (dim) p.style.opacity = .7; tout.append(p); term.scrollTop = 1e6; };
     const CMD = {
       help: () => 'Commandes : help, whoami, ls, tarifs, avis, neofetch, ping, contact, theme jedi|vador|mando|reset, clear',
-      whoami: () => 'jean-baptiste · Titre Pro TSSR (2026) · Pleumeleuc (35) · Déplacement 15 km offert',
+      whoami: () => 'jean-baptiste · Titre Pro TSSR (2026) · Pleumeleuc (35)',
       ls: () => 'prestations/  linux/  avis_5_etoiles.txt  tarifs.txt  contact.sh',
-      tarifs: () => 'Diagnostic ......... inclus\nWi-Fi .............. 49 €\nDésinfection ....... 65 €\nRéinstall OS ....... 79 €\nDéplacement ........ offert (15 km)\nPro ................ sur devis',
+      tarifs: () => 'Diagnostic ......... inclus\nWi-Fi .............. 49 €\nDésinfection ....... 65 €\nRéinstall OS ....... 79 €\nPro ................ sur devis',
       avis: () => '★★★★★ Muriel SOPHIE : "Intervention à mon domicile très efficace !"\n★★★★★ Florian Ramard : "Super compétent et efficace. Réaction très rapide"',
       neofetch: () => 'OS: Fontaine-Breizh IT 26.11\nHost: Pleumeleuc, Bretagne\nShell: bzh-sh\nMascotte: Belette + Tux\nAvis Google: 5.0/5 ★',
       ping: () => 'PING fontainebreizhinformatique.fr : 64 bytes, time=0.4 ms',
@@ -132,13 +66,9 @@
     const n = navigator, ua = n.userAgent;
     const nav = /Firefox\//.test(ua) ? 'Firefox' : /Edg\//.test(ua) ? 'Edge' : /Chrome\//.test(ua) ? 'Chrome' : /Safari\//.test(ua) ? 'Safari' : 'Standard';
     const cores = n.hardwareConcurrency || 0, mem = n.deviceMemory || 0;
-    const rows = [
-      ['Plateforme', n.userAgentData?.platform || n.platform || 'Détectée'],
-      ['Navigateur', nav],
-      ['Cœurs logiques', cores || 'Non communiqué'],
-      ['Mémoire vive', mem ? '≥ ' + mem + ' Go' : 'Masquée par le navigateur'],
-      ['Écran', `${screen.width}×${screen.height} px`]
-    ];
+    const rows = [['Plateforme', n.userAgentData?.platform || n.platform || 'Détectée'], ['Navigateur', nav],
+      ['Cœurs logiques', cores || 'Non communiqué'], ['Mémoire vive', mem ? '≥ ' + mem + ' Go' : 'Masquée par le navigateur'],
+      ['Écran', `${screen.width}×${screen.height} px`]];
     const modest = (cores && cores <= 2) || (mem && mem <= 4);
     $('#scan-out').innerHTML = `<table class="scan-table">${rows.map(r => `<tr><td>${r[0]}</td><td>${esc(r[1])}</td></tr>`).join('')}</table>
       <p class="verdict">${modest ? '💡 Configuration modeste : Linux Mint ou Zorin OS lui offrirait une seconde jeunesse.' : '✅ Configuration fluide : pensez aux sauvegardes et à la propreté du système.'}</p>`;
@@ -161,13 +91,10 @@
 
   /* Palette Ctrl+K */
   const ACT = [
-    ['Voir les prestations et tarifs', () => go('services')],
-    ['Lire les avis clients 5★', () => go('avis')],
-    ['Voir les actualités IT', () => go('actualites')],
-    ['Descendre au Labo Geek', () => go('lab')],
+    ['Voir les prestations et tarifs', () => go('services')], ['Lire les avis clients 5★', () => go('avis')],
+    ['Voir les actualités IT', () => go('actualites')], ['Descendre au Labo Geek', () => go('lab')],
     ['Écrire sur WhatsApp', () => open(WA)],
-    ['Thème Jedi', () => setTheme(...THEMES.jedi)],
-    ['Thème Vador', () => setTheme(...THEMES.vador)],
+    ['Thème Jedi', () => setTheme(...THEMES.jedi)], ['Thème Vador', () => setTheme(...THEMES.vador)],
     ['Thème Mandalorian', () => setTheme(...THEMES.mando)],
     ['Réinitialiser le thème', () => { setTheme(...THEMES.reset); document.body.classList.remove('hacker'); }]
   ];
@@ -187,7 +114,6 @@
   const openPal = () => { pal.classList.add('open'); $('#pin').value = ''; sel = 0; draw(); $('#pin').focus(); };
   $('#pul').onclick = e => { const li = e.target.closest('li'); if (li) run(+li.dataset.i); };
   pal.onclick = e => { if (e.target === pal) closePal(); };
-  $('#pal-open')?.addEventListener('click', e => { e.preventDefault(); openPal(); });
   $('#pin').addEventListener('input', draw);
   $('#pin').addEventListener('keydown', e => {
     e.stopPropagation();
