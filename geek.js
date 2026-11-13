@@ -31,19 +31,19 @@
     $$('a', nl).forEach(a => a.addEventListener('click', close));
   }
 
-  /* Mini-Quiz Interactif (Haut de page - Style Clubic) */
+  /* Mini-Quiz Interactif (Haut de page) */
   const quizChoices = [
     {
-      verdict: 'Diagnostic inclus : déplacement à domicile inclus (15 km autour de Pleumeleuc) ou intervention en atelier. Désinfection virus ou nettoyage système pour 65 €.',
-      waText: 'Bonjour Jean-Baptiste, mon PC est lent ou infecté et je souhaiterais un diagnostic à domicile.'
+      verdict: "Diagnostic inclus : déplacement à domicile offert (15 km autour de Pleumeleuc). Désinfection virus ou nettoyage système complet pour 65 €.",
+      waText: "Bonjour Jean-Baptiste, mon PC est lent ou infecté et je souhaiterais un diagnostic à domicile."
     },
     {
-      verdict: 'Accompagnement Pro sur devis : stratégie numérique, création de visuels et community management pour booster la visibilité de votre entreprise.',
-      waText: 'Bonjour Jean-Baptiste, je souhaite être accompagné pour la gestion de mes réseaux sociaux / conseil IT.'
+      verdict: "Accompagnement Pro sur devis : stratégie numérique, création de visuels et community management pour booster la visibilité de votre entreprise.",
+      waText: "Bonjour Jean-Baptiste, je souhaite être accompagné pour la gestion de mes réseaux sociaux / conseil IT."
     },
     {
-      verdict: 'Ne jetez pas votre PC Windows 10 ! L'installation clé en main de Linux Mint ou Zorin OS (79 €) lui offre une seconde vie rapide, sécurisée et éco-responsable.',
-      waText: 'Bonjour Jean-Baptiste, j'aimerais donner une seconde vie à mon PC Windows 10 avec Linux.'
+      verdict: "Ne jetez pas votre PC Windows 10 ! L'installation clé en main de Linux Mint ou Zorin OS (79 €) lui offre une seconde vie rapide, sécurisée et éco-responsable.",
+      waText: "Bonjour Jean-Baptiste, j'aimerais donner une seconde vie à mon PC Windows 10 avec Linux."
     }
   ];
   const qOpts = $('#quiz-options'), qRes = $('#quiz-result'), qVerd = $('#quiz-verdict'), qWa = $('#quiz-wa'), qReset = $('#quiz-reset');
@@ -63,19 +63,22 @@
     });
   }
 
-  /* Pépite Geek / Actualité du jour */
+  /* Citation / Pépite Geek du jour (aléatoire au chargement + bouton suivant) */
   const QUOTES = [
-    '« Le DNS est toujours le coupable. Toujours. »',
-    '« Il y a 10 types de personnes dans le monde : celles qui comprennent le binaire, et les autres. »',
-    '« Une sauvegarde n'existe vraiment que si on a testé sa restauration. »',
-    '« Sous Linux, un vieux PC retrouve ses 20 ans. C'est ça la vraie écologie numérique. »',
-    '« Avez-vous essayé d'éteindre et de rallumer ? (Mais pour de vrai, pas en veille prolongée !) »',
-    '« TSSR un jour, Jedi du réseau toujours : que la bande passante soit avec vous. »'
+    "« Le DNS est toujours le coupable. Toujours. » — Proverbe d'Admin Sys",
+    "« Il y a 10 types de personnes dans le monde : celles qui comprennent le binaire, et les autres. »",
+    "« Une sauvegarde n'existe vraiment que si on a testé sa restauration. »",
+    "« Sous Linux, un vieux PC retrouve ses 20 ans. C'est ça la vraie écologie numérique. »",
+    "« Avez-vous essayé d'éteindre et de rallumer ? (Pour de vrai, pas en veille prolongée !) »",
+    "« TSSR un jour, Jedi du réseau toujours : que la bande passante soit avec vous. »",
+    "« Le cloud, c'est juste l'ordinateur de quelqu'un d'autre. »",
+    "« Un mot de passe, c'est comme une brosse à dents : on ne le partage pas et on le change régulièrement. »"
   ];
-  let qi = 0;
+  let qi = Math.floor(Math.random() * QUOTES.length);
   const qTxt = $('#daily-quote-text'), qNext = $('#next-quote');
-  if (qTxt && qNext) {
-    qNext.addEventListener('click', () => {
+  if (qTxt) {
+    qTxt.textContent = QUOTES[qi];
+    qNext?.addEventListener('click', () => {
       qi = (qi + 1) % QUOTES.length;
       qTxt.textContent = QUOTES[qi];
     });
@@ -163,7 +166,7 @@
   const ACT = [
     ['Voir les prestations et tarifs', () => go('services')],
     ['Lire les avis clients 5★', () => go('avis')],
-    ['Voir les actualités IT Clubic', () => go('actualites')],
+    ['Questions fréquentes & secteur', () => go('faq')],
     ['Descendre au Labo Geek', () => go('lab')],
     ['Écrire sur WhatsApp', () => open(WA)],
     ['Thème Jedi', () => setTheme(...THEMES.jedi)],
