@@ -17,6 +17,7 @@ jamais le site.
 import re
 import html
 import datetime
+from email.utils import parsedate_to_datetime
 from urllib.request import urlopen, Request
 import xml.etree.ElementTree as ET
 
@@ -24,13 +25,10 @@ MAX_ITEMS = 3
 DESC_MAX_LEN = 220
 INDEX_FILE = "index.html"
 
-# Une catégorie = un bloc de la page, délimité par des marqueurs
-# <!-- XXX:START --> / <!-- XXX:END --> dans index.html, alimenté par
-# un ou plusieurs flux RSS (utile pour combiner Android + iOS).
 CATEGORIES = [
     {
         "marker": "NEWS",
-        "css_class": "",  # carte "Informatique & Sécurité" = style par défaut
+        "css_class": "",
         "feeds": [
             "https://www.tomsguide.fr/category/web/securite/feed",
         ],
@@ -75,10 +73,16 @@ def format_date_fr(dt: datetime.datetime) -> str:
 
 
 def parse_pub_date(raw: str) -> datetime.datetime:
-    try:
-        return datetime.datetime.strptime(raw[:25].strip(), "%a, %d %b %Y %H:%M:%S")
-    except ValueError:
+    if not raw:
         return datetime.datetime.min
+    try:
+        dt = parsedate_to_datetime(raw.strip())
+        return dt.replace(tzinfo=None)
+    except Exception:
+        try:
+            return datetime.datetime.strptime(raw[:25].strip(), "%a, %d %b %Y %H:%M:%S")
+        except ValueError:
+            return datetime.datetime.min
 
 
 def parse_items(xml_bytes: bytes) -> list[dict]:
@@ -105,7 +109,7 @@ def collect_category_items(feed_urls: list[str]) -> list[dict]:
     for url in feed_urls:
         try:
             all_items.extend(parse_items(fetch_feed(url)))
-        except Exception as exc:  # noqa: BLE001 - un flux en panne ne doit pas bloquer les autres
+        except Exception as exc:
             print(f"  flux ignoré ({url}) : {exc}")
     all_items.sort(key=lambda it: it["_dt"], reverse=True)
     return all_items[:MAX_ITEMS]

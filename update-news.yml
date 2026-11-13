@@ -1,41 +1,32 @@
-name: Mise a jour auto des actualites
+name: Actualiser les actualités IT
 
 on:
   schedule:
-    # Exécution à 8h00, 12h00 et 18h00 (Heure de Paris)
-    # Les serveurs GitHub sont en UTC, on décale donc de 2h
-    - cron: "0 6,10,16 * * *"
-  
-  # Cette ligne te permet aussi de forcer la mise à jour manuellement via un bouton sur GitHub
-  workflow_dispatch: 
+    - cron: "0 6 * * *"   # tous les jours à 06:00 UTC (~08:00 en France)
+  workflow_dispatch:        # ajoute un bouton "Run workflow" manuel dans l'onglet Actions
+
+permissions:
+  contents: write
 
 jobs:
   update-news:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Donne le droit au bot de sauvegarder le nouveau index.html
-
     steps:
-      - name: Récupération du code source (Checkout)
+      - name: Récupérer le dépôt
         uses: actions/checkout@v4
 
-      - name: Préparation de l'environnement Python
+      - name: Installer Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.12"
 
-      - name: Installation des paquets nécessaires
-        # On s'assure d'installer feedparser et les librairies classiques pour lire les flux RSS
-        run: pip install feedparser requests beautifulsoup4
+      - name: Régénérer la section actualités
+        run: python3 update_news.py
 
-      - name: Exécution du script Python
-        # C'est ici que ton script va lire les RSS et modifier le fichier index.html
-        run: python update_news.py
-
-      - name: Commit et Push (Sauvegarde en ligne)
+      - name: Commit et push si le contenu a changé
         run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
-          # Le script vérifie s'il y a de nouvelles actus. Si oui, il sauvegarde, sinon il ne fait rien.
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualisation automatique des actus IT" && git push)
+          git diff --cached --quiet || git commit -m "Actualisation automatique des actus IT"
+          git push
