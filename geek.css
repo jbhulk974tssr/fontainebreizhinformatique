@@ -162,11 +162,12 @@ h2 {
 }
 
 .brand img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--g);
+  height: 40px;
+  width: auto;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 3px 6px;
+  object-fit: contain;
 }
 
 .nav-toggle {
@@ -252,33 +253,26 @@ h2 {
 }
 
 .hero-logo-box {
-  background: var(--card);
-  border: 1px solid var(--bd);
-  border-radius: var(--radius);
-  padding: 1.75rem 1.5rem;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 25px var(--glow);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-  animation: floatLogo 6s ease-in-out infinite;
-}
-
-@keyframes floatLogo {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  background: #ffffff;
+  border: 2px solid rgba(0, 155, 77, 0.35);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 155, 77, 0.18);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hero-logo-box:hover {
-  transform: translateY(-8px) scale(1.01);
   border-color: var(--g);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 35px var(--glow);
-  animation-play-state: paused;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 32px rgba(0, 155, 77, 0.3);
 }
 
 .hero-logo {
   width: 100%;
-  max-width: 400px;
+  max-width: 390px;
   height: auto;
-  border-radius: 8px;
   object-fit: contain;
   margin: 0 auto;
 }
@@ -814,7 +808,7 @@ details p {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: 2.2rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .contact-grid h2, .contact-grid .sub {
@@ -1207,4 +1201,40 @@ footer {
 
 .float a.w {
   background: #16a34a;
+}
+
+
+/* ==========================================================================
+   COULEURS OFFICIELLES DES LOGOS RÉSEAUX & WHATSAPP (Pills, Cartes, Footer)
+   ========================================================================== */
+.soc-pill.fb i, .social-big.fb i, .social-icons-footer a.fb:hover {
+  color: #1877F2;
+}
+.soc-pill.ig i, .social-big.ig i, .social-icons-footer a.ig:hover {
+  color: #E4405F;
+}
+.soc-pill.gbp i, .social-icons-footer a.gbp:hover {
+  color: #4285F4;
+}
+.social-icons-footer a.wa:hover {
+  color: #25D366;
+}
+.social-big i {
+  font-size: 1.5rem;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+.float a.w {
+  background: #25D366;
+  color: #0b141a;
+}
+.float a.w:hover {
+  background: #20bd5a;
+  color: #0b141a;
 }
