@@ -125,7 +125,7 @@ def build_cards_html(items: list[dict], css_class: str) -> str:
             f'                <h3>{html.escape(it["title"])}</h3>\n'
             f'                <p>{html.escape(it["desc"])}</p>\n'
             f'                <a href="{html.escape(it["link"])}" target="_blank" rel="noopener">'
-            "Lire l'article source →</a>\n'
+            "Lire l'article source →</a>\n"
             "            </div>"
         )
     return "\n\n".join(cards)
